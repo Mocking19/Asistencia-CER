@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Asistencia de Pacientes</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Registro de Asistencia de Pacientes CER</h1>
+    <p>Usa esta aplicación en cualquier navegador para planificar pacientes y marcar su llegada.</p>
+  </header>
+
+  <main>
+    <section class="panel">
+      <div class="section-header">
+        <h2>Asistencia y Pacientes del día</h2>
+        <p id="stats"></p>
+      </div>
+      <div class="table-wrap">
+        <table id="appointmentsTable">
+          <thead>
+            <tr>
+              <th>Hora*</th>
+              <th>Protocolo</th>
+              <th>Doctor</th>
+              <th>Nombre</th>
+              <th>Número</th>
+              <th>Teléfono</th>
+              <th>Observaciones</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <p style="font-size: 0.85rem; color: #5c6879; margin-top: 12px;">* Hora de llegada del paciente</p>
+    </section>
+
+    <section class="panel compact">
+      <div class="collapsible-header" id="toggleControls">
+        <h2>Controles</h2>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="collapsible-content" id="controlsContent">
+        <div class="date-row">
+          <label>Ver fecha:<input type="date" id="viewDate" /></label>
+          <button id="downloadPdf">Descargar asistencia PDF</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="collapsible-header" id="toggleForm">
+        <h2>Agregar paciente programado</h2>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="collapsible-content" id="formContent">
+        <form id="appointmentForm">
+          <div class="form-grid">
+            <label>Protocolo<input type="text" id="protocol" required /></label>
+            <label>Doctor<input type="text" id="doctor" required /></label>
+            <label>Nombre del paciente<input type="text" id="name" required /></label>
+            <label>Número de paciente<input type="text" id="patientNumber" required /></label>
+            <label>Teléfono<input type="tel" id="phone" /></label>
+            <label>Observaciones<textarea id="notes"></textarea></label>
+            <label>Fecha de cita<input type="date" id="appointmentDate" required /></label>
+          </div>
+          <div class="actions">
+            <button type="submit">Agregar a lista</button>
+            <button type="button" id="resetForm">Limpiar formulario</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Datos guardados localmente en el navegador. Puedes usar esta app offline.</p>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

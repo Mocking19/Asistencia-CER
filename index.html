@@ -24,6 +24,7 @@
             <tr>
               <th>Hora*</th>
               <th>Protocolo</th>
+              <th>Visita</th>
               <th>Doctor</th>
               <th>Nombre</th>
               <th>Número</th>
@@ -60,10 +61,19 @@
       <div class="collapsible-content" id="formContent">
         <form id="appointmentForm">
           <div class="form-grid">
-            <label>Protocolo<input type="text" id="protocol" required /></label>
+            <label>Protocolo
+              <select id="protocol" required>
+                <option value="">Selecciona un protocolo</option>
+              </select>
+            </label>
+            <label>Visita<input type="text" id="visit" required /></label>
             <label>Doctor<input type="text" id="doctor" required /></label>
-            <label>Nombre del paciente<input type="text" id="name" required /></label>
-            <label>Número de paciente<input type="text" id="patientNumber" required /></label>
+            <label>Nombre del paciente<input type="text" id="name" readonly required /></label>
+            <label>Número de paciente
+              <select id="patientNumber" required>
+                <option value="">Selecciona un protocolo primero</option>
+              </select>
+            </label>
             <label>Teléfono<input type="tel" id="phone" /></label>
             <label>Observaciones<textarea id="notes"></textarea></label>
             <label>Fecha de cita<input type="date" id="appointmentDate" required /></label>

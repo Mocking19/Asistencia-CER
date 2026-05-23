@@ -5,6 +5,10 @@ const viewDateInput = document.getElementById('viewDate');
 const downloadPdfButton = document.getElementById('downloadPdf');
 const stats = document.getElementById('stats');
 const resetFormButton = document.getElementById('resetForm');
+const protocolSelect = document.getElementById('protocol');
+const patientNumberSelect = document.getElementById('patientNumber');
+const nameInput = document.getElementById('name');
+let protocolosData = [];
 
 const defaultData = {
   appointments: []
@@ -17,6 +21,53 @@ function loadData() {
 
 function saveData(data) {
   window.localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+}
+
+async function fetchProtocolos() {
+  const response = await fetch('/api/protocolos');
+  if (!response.ok) {
+    throw new Error('No se pudo cargar la lista de protocolos');
+  }
+  return response.json();
+}
+
+function populateProtocolSelect(protocolos) {
+  protocolosData = protocolos;
+  const options = protocolosData
+    .map(item => `<option value="${item.protocolo}">${item.protocolo}</option>`)
+    .join('');
+
+  protocolSelect.innerHTML = `<option value="">Selecciona un protocolo</option>${options}`;
+  patientNumberSelect.innerHTML = '<option value="">Selecciona un protocolo primero</option>';
+  nameInput.value = '';
+}
+
+function populatePatientNumbers(protocolo) {
+  const selected = protocolosData.find(item => item.protocolo === protocolo);
+  if (!selected) {
+    patientNumberSelect.innerHTML = '<option value="">Selecciona un protocolo primero</option>';
+    nameInput.value = '';
+    return;
+  }
+
+  const patientsOptions = selected.pacientes
+    .map(paciente => `
+      <option value="${paciente.numero_paciente}" data-name="${paciente.nombre}">
+        ${paciente.numero_paciente} — ${paciente.nombre}
+      </option>`)
+    .join('');
+
+  patientNumberSelect.innerHTML = `
+    <option value="">Selecciona número de paciente</option>
+    ${patientsOptions}
+  `;
+  nameInput.value = '';
+}
+
+function updateNameFromPatient() {
+  const selectedOption = patientNumberSelect.selectedOptions[0];
+  const patientName = selectedOption?.dataset?.name || '';
+  nameInput.value = patientName;
 }
 
 function formatDate(dateString) {
@@ -82,6 +133,7 @@ function buildAppointmentRow(appointment) {
   tr.innerHTML = `
     <td>${arrivalHourHtml}</td>
     <td>${appointment.protocol}</td>
+    <td>${appointment.visit || '-'}</td>
     <td>${appointment.doctor}</td>
     <td>${appointment.name}</td>
     <td>${appointment.patientNumber}</td>
@@ -126,7 +178,7 @@ function renderTables() {
   appointmentsTableBody.innerHTML = '';
 
   if (sortedAppointments.length === 0) {
-    appointmentsTableBody.innerHTML = `<tr><td colspan="9">No hay pacientes programados para esta fecha.</td></tr>`;
+    appointmentsTableBody.innerHTML = `<tr><td colspan="10">No hay pacientes programados para esta fecha.</td></tr>`;
   } else {
     sortedAppointments.forEach(appointment => appointmentsTableBody.appendChild(buildAppointmentRow(appointment)));
   }
@@ -140,6 +192,7 @@ function renderTables() {
 function addAppointment(event) {
   event.preventDefault();
   const protocol = document.getElementById('protocol').value.trim();
+  const visit = document.getElementById('visit').value.trim();
   const doctor = document.getElementById('doctor').value.trim();
   const name = document.getElementById('name').value.trim();
   const patientNumber = document.getElementById('patientNumber').value.trim();
@@ -147,7 +200,7 @@ function addAppointment(event) {
   const notes = document.getElementById('notes').value.trim();
   const appointmentDate = document.getElementById('appointmentDate').value;
 
-  if (!protocol || !doctor || !name || !patientNumber || !appointmentDate) {
+  if (!protocol || !visit || !doctor || !name || !patientNumber || !appointmentDate) {
     return;
   }
 
@@ -155,6 +208,7 @@ function addAppointment(event) {
   data.appointments.push({
     id: createId(),
     protocol,
+    visit,
     doctor,
     name,
     patientNumber,
@@ -242,7 +296,7 @@ function downloadPdf() {
   const marginLeft = 40;
   let currentY = 90;
 
-  const headers = ['Hora', 'Doctor', 'Protocolo', 'Paciente', 'N°', 'Teléfono', 'Observaciones'];
+  const headers = ['Hora', 'Doctor', 'Protocolo', 'Visita', 'Paciente', 'N°', 'Teléfono', 'Observaciones'];
   const rowHeight = 18;
 
   doc.setFontSize(9);
@@ -257,6 +311,7 @@ function downloadPdf() {
         formatTime(item.arrivalTime),
         item.doctor,
         item.protocol,
+        item.visit || '-',
         item.name,
         item.patientNumber,
         item.phone || '-',
@@ -284,6 +339,8 @@ function bindEvents() {
     appointmentForm.reset();
     setDefaultDates();
   });
+  protocolSelect.addEventListener('change', () => populatePatientNumbers(protocolSelect.value));
+  patientNumberSelect.addEventListener('change', updateNameFromPatient);
   viewDateInput.addEventListener('change', renderTables);
   downloadPdfButton.addEventListener('click', downloadPdf);
 
@@ -310,12 +367,21 @@ function toggleCollapsible(section) {
   contentEl.classList.toggle('hidden');
 }
 
-function initialize() {
+async function initialize() {
   const tomorrow = new Date();
   tomorrow.setDate(tomorrow.getDate() + 1);
   document.getElementById('appointmentDate').value = getLocalDateString(tomorrow);
   viewDateInput.value = getLocalDateString(new Date());
+
   bindEvents();
+
+  try {
+    const protocolos = await fetchProtocolos();
+    populateProtocolSelect(protocolos);
+  } catch (error) {
+    console.warn(error.message);
+  }
+
   renderTables();
   
   // Inicialmente, colapsamos formulario

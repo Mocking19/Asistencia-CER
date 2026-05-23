@@ -18,3 +18,19 @@ Aplicación SPA simple para registrar la asistencia de pacientes en la clínica.
 
 ## Guardado
 Los datos se guardan en el almacenamiento local del navegador (`localStorage`), por lo que se conservan entre sesiones en el mismo equipo.
+
+## Backend
+Este proyecto ahora incluye un backend de Node.js + Express que sirve los archivos estáticos y expone los protocolos de `protocolos.json` como API.
+
+Para iniciar el servidor:
+
+1. Instala dependencias:
+   ```bash
+   npm install
+   ```
+2. Inicia el servidor:
+   ```bash
+   npm start
+   ```
+
+Luego abre `http://localhost:3000` en tu navegador.

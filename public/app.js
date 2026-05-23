@@ -1,4 +1,20 @@
-const STORAGE_KEY = 'asistenciaPacientesData';
+// ============= FIREBASE CONFIGURATION =============
+const firebaseConfig = {
+  apiKey: "AIzaSyAJ6Cvm-4QerpWAbNkk9x5lirHNDbBV9Qw",
+  authDomain: "asistencia-pacientes-cer.firebaseapp.com",
+  databaseURL: "https://asistencia-pacientes-cer-default-rtdb.firebaseio.com",
+  projectId: "asistencia-pacientes-cer",
+  storageBucket: "asistencia-pacientes-cer.firebasestorage.app",
+  messagingSenderId: "632240426487",
+  appId: "1:632240426487:web:aed8fdd8d9652dfdd8b2f2"
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+const database = firebase.database();
+const appointmentsRef = database.ref('appointments');
+
+// ============= DOM ELEMENTS =============
 const appointmentForm = document.getElementById('appointmentForm');
 const appointmentsTableBody = document.querySelector('#appointmentsTable tbody');
 const viewDateInput = document.getElementById('viewDate');
@@ -8,19 +24,31 @@ const resetFormButton = document.getElementById('resetForm');
 const protocolSelect = document.getElementById('protocol');
 const patientNumberSelect = document.getElementById('patientNumber');
 const nameInput = document.getElementById('name');
+
+// ============= STATE =============
 let protocolosData = [];
+let appointmentsData = {};  // Object with { id: appointment }
 
-const defaultData = {
-  appointments: []
-};
-
-function loadData() {
-  const stored = window.localStorage.getItem(STORAGE_KEY);
-  return stored ? JSON.parse(stored) : defaultData;
+// ============= FIREBASE LISTENERS =============
+function setupAppointmentsListener() {
+  appointmentsRef.on('value', (snapshot) => {
+    const data = snapshot.val();
+    appointmentsData = data || {};
+    renderTables();
+  });
 }
 
-function saveData(data) {
-  window.localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+// ============= FIREBASE OPERATIONS =============
+function addAppointmentToFirebase(appointmentObj) {
+  return appointmentsRef.push(appointmentObj);
+}
+
+function updateAppointmentInFirebase(id, updates) {
+  return appointmentsRef.child(id).update(updates);
+}
+
+function deleteAppointmentFromFirebase(id) {
+  return appointmentsRef.child(id).remove();
 }
 
 async function fetchProtocolos() {
@@ -147,10 +175,15 @@ function buildAppointmentRow(appointment) {
 
 
 function renderTables() {
-  const data = loadData();
   const selectedDate = getSelectedDate();
 
-  const appointmentsForDate = data.appointments.filter(item => item.appointmentDate === selectedDate);
+  // Convert appointmentsData object to array with IDs
+  const appointmentsArray = Object.keys(appointmentsData).map(id => ({
+    id,
+    ...appointmentsData[id]
+  }));
+
+  const appointmentsForDate = appointmentsArray.filter(item => item.appointmentDate === selectedDate);
   
   // Ordenar: primero por doctor, luego llegados (con hora), luego pendientes, luego ausentes
   const sortedAppointments = [...appointmentsForDate].sort((a, b) => {
@@ -204,9 +237,7 @@ function addAppointment(event) {
     return;
   }
 
-  const data = loadData();
-  data.appointments.push({
-    id: createId(),
+  const appointmentObj = {
     protocol,
     visit,
     doctor,
@@ -218,12 +249,14 @@ function addAppointment(event) {
     arrivalTime: null,
     absent: false,
     absenceReason: ''
-  });
+  };
 
-  saveData(data);
-  appointmentForm.reset();
-  setDefaultDates();
-  renderTables();
+  addAppointmentToFirebase(appointmentObj)
+    .then(() => {
+      appointmentForm.reset();
+      setDefaultDates();
+    })
+    .catch(error => console.error('Error al agregar cita:', error));
 }
 
 function setDefaultDates() {
@@ -232,55 +265,49 @@ function setDefaultDates() {
   document.getElementById('appointmentDate').value = getLocalDateString(tomorrow);
 }
 
-function handleArrival(id) {
-  const data = loadData();
-  const appointment = data.appointments.find(item => item.id === id);
-  if (!appointment || appointment.arrivalTime) return;
-  appointment.arrivalTime = new Date().toISOString();
-  saveData(data);
-  renderTables();
-}
-
 function markArrival(button) {
-  handleArrival(button.dataset.id);
+  const id = button.dataset.id;
+  updateAppointmentInFirebase(id, {
+    arrivalTime: new Date().toISOString()
+  }).catch(error => console.error('Error al marcar llegada:', error));
 }
 
 function deleteAppointment(button) {
   const id = button.dataset.id;
   if (!confirm('¿Estás seguro de que deseas eliminar este paciente de la lista?')) return;
   
-  const data = loadData();
-  data.appointments = data.appointments.filter(item => item.id !== id);
-  saveData(data);
-  renderTables();
+  deleteAppointmentFromFirebase(id)
+    .catch(error => console.error('Error al eliminar cita:', error));
 }
 
 function markNoAttendance(button) {
   const id = button.dataset.id;
   const reason = prompt('Ingresa la razón por la que el paciente no asistió:');
   
-  if (reason === null) return; // Usuario canceló
+  if (reason === null) return;
   if (reason.trim() === '') {
     alert('Por favor, ingresa una razón.');
     return;
   }
   
-  const data = loadData();
-  const appointment = data.appointments.find(item => item.id === id);
-  if (!appointment) return;
-  
-  appointment.absent = true;
-  appointment.absenceReason = reason.trim();
-  saveData(data);
-  renderTables();
+  updateAppointmentInFirebase(id, {
+    absent: true,
+    absenceReason: reason.trim()
+  }).catch(error => console.error('Error al marcar ausencia:', error));
 }
 
 function downloadPdf() {
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF({ unit: 'pt', format: 'a4' });
   const selectedDate = getSelectedDate();
-  const data = loadData();
-  const attendanceForDate = data.appointments
+
+  // Convert appointmentsData object to array with IDs
+  const appointmentsArray = Object.keys(appointmentsData).map(id => ({
+    id,
+    ...appointmentsData[id]
+  }));
+
+  const attendanceForDate = appointmentsArray
     .filter(item => item.arrivalTime && item.appointmentDate === selectedDate)
     .sort((a, b) => {
       const byDoctor = a.doctor.localeCompare(b.doctor, 'es', { sensitivity: 'base' });
@@ -382,7 +409,8 @@ async function initialize() {
     console.warn(error.message);
   }
 
-  renderTables();
+  // Setup Firebase listener for real-time updates
+  setupAppointmentsListener();
   
   // Inicialmente, colapsamos formulario
   document.getElementById('toggleForm').classList.add('collapsed');

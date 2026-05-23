@@ -4,14 +4,14 @@ const fs = require('fs');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const dataPath = path.join(__dirname, 'protocolos.json');
+const dataPath = path.join(__dirname, 'public', 'protocolos.json');
 
 function loadProtocolos() {
   const raw = fs.readFileSync(dataPath, 'utf-8');
   return JSON.parse(raw);
 }
 
-app.use(express.static(path.join(__dirname)));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/api/protocolos', (req, res) => {
   try {

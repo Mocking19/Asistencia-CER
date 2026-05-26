@@ -8,6 +8,7 @@ const resetFormButton = document.getElementById('resetForm');
 const protocolSelect = document.getElementById('protocol');
 const patientNumberSelect = document.getElementById('patientNumber');
 const nameInput = document.getElementById('name');
+const birthDateInput = document.getElementById('birthDate');
 let protocolosData = [];
 
 const defaultData = {
@@ -52,7 +53,7 @@ function populatePatientNumbers(protocolo) {
 
   const patientsOptions = selected.pacientes
     .map(paciente => `
-      <option value="${paciente.numero_paciente}" data-name="${paciente.nombre}">
+      <option value="${paciente.numero_paciente}" data-name="${paciente.nombre}" data-birthdate="${paciente.fecha_nacimiento}">
         ${paciente.numero_paciente} — ${paciente.nombre}
       </option>`)
     .join('');
@@ -67,7 +68,15 @@ function populatePatientNumbers(protocolo) {
 function updateNameFromPatient() {
   const selectedOption = patientNumberSelect.selectedOptions[0];
   const patientName = selectedOption?.dataset?.name || '';
+  const birthDate = selectedOption?.dataset?.birthdate || '';
+
   nameInput.value = patientName;
+  birthDateInput.value = birthDate ? formatDateForInput(birthDate) : '';
+}
+
+function formatDateForInput(dateString) {
+  const [day, month, year] = dateString.split('-');
+  return `${year}-${month}-${day}`;
 }
 
 function formatDate(dateString) {
@@ -135,7 +144,7 @@ function buildAppointmentRow(appointment) {
     <td>${appointment.protocol}</td>
     <td>${appointment.patientNumber}</td>
     <td>${appointment.name}</td>
-    <td>${appointment.phone || '-'}</td>
+    <td>${appointment.birthDate ? formatDateFromString(appointment.birthDate) : '-'}</td>
     <td>${appointment.doctor}</td>
     <td>${formatDateFromString(appointment.appointmentDate)}</td>
     <td>${appointment.notes || '-'}</td>
@@ -179,7 +188,7 @@ function renderTables() {
   appointmentsTableBody.innerHTML = '';
 
   if (sortedAppointments.length === 0) {
-    appointmentsTableBody.innerHTML = `<tr><td colspan="10">No hay pacientes programados para esta fecha.</td></tr>`;
+    appointmentsTableBody.innerHTML = `<tr><td colspan="11">No hay pacientes programados para esta fecha.</td></tr>`;
   } else {
     sortedAppointments.forEach(appointment => appointmentsTableBody.appendChild(buildAppointmentRow(appointment)));
   }
@@ -197,11 +206,11 @@ function addAppointment(event) {
   const doctor = document.getElementById('doctor').value.trim();
   const name = document.getElementById('name').value.trim();
   const patientNumber = document.getElementById('patientNumber').value.trim();
-  const phone = document.getElementById('phone').value.trim();
+  const birthDate = document.getElementById('birthDate').value;
   const notes = document.getElementById('notes').value.trim();
   const appointmentDate = document.getElementById('appointmentDate').value;
 
-  if (!protocol || !visit || !doctor || !name || !patientNumber || !appointmentDate) {
+  if (!protocol || !visit || !doctor || !name || !patientNumber || !birthDate || !appointmentDate) {
     return;
   }
 
@@ -213,7 +222,7 @@ function addAppointment(event) {
     doctor,
     name,
     patientNumber,
-    phone,
+    birthDate,
     notes,
     appointmentDate,
     arrivalTime: null,
@@ -305,7 +314,7 @@ function downloadPdf() {
   let currentY = 90;
   const rowHeight = 18;
 
-  const headers = ['Visita', 'Protocolo', 'N°', 'Paciente', 'Teléfono', 'Doctor', 'Fecha cita', 'Observaciones', 'Hora'];
+  const headers = ['Visita', 'Protocolo', 'N°', 'Paciente', 'Fecha nacimiento', 'Doctor', 'Fecha cita', 'Observaciones', 'Hora'];
   doc.setFontSize(9);
   doc.text(headers.join(' | '), marginLeft, currentY);
   currentY += rowHeight;
@@ -320,7 +329,7 @@ function downloadPdf() {
         item.protocol,
         item.patientNumber,
         item.name,
-        item.phone || '-',
+        item.birthDate ? formatDateFromString(item.birthDate) : '-',
         item.doctor,
         formatDateFromString(item.appointmentDate),
         item.notes || '-',
@@ -350,7 +359,7 @@ function downloadPdf() {
     doc.text('Pacientes que no asistieron', marginLeft, currentY);
     currentY += rowHeight;
 
-    const absentHeaders = ['Visita', 'Protocolo', 'N°', 'Paciente', 'Teléfono', 'Doctor', 'Fecha cita', 'Razón'];
+    const absentHeaders = ['Visita', 'Protocolo', 'N°', 'Paciente', 'Fecha nacimiento', 'Doctor', 'Fecha cita', 'Razón'];
     doc.setFontSize(9);
     doc.text(absentHeaders.join(' | '), marginLeft, currentY);
     currentY += rowHeight;
@@ -365,7 +374,7 @@ function downloadPdf() {
         item.protocol,
         item.patientNumber,
         item.name,
-        item.phone || '-',
+        item.birthDate ? formatDateFromString(item.birthDate) : '-',
         item.doctor,
         formatDateFromString(item.appointmentDate),
         item.absenceReason || '-'

@@ -4,27 +4,33 @@
     "pacientes": [
       {
         "numero_paciente": "000051",
-        "nombre": "EMILIO GUTIERRES"
+        "nombre": "EMILIO GUTIERREZ",
+        "fecha_nacimiento": "26-09-1950"
       },
       {
         "numero_paciente": "000052",
-        "nombre": "ALFREDO RIVAS"
-      },
-      {
-        "numero_paciente": "000053",
-        "nombre": "MARÍA ARROYO"
+        "nombre": "ALFREDO RIVAS",
+        "fecha_nacimiento": "20-05-1947"
       },
       {
         "numero_paciente": "000054",
-        "nombre": "ANTONIO FLORES"
+        "nombre": "ANTONIO FLORES",
+        "fecha_nacimiento": "22-10-1957"
       },
       {
         "numero_paciente": "000055",
-        "nombre": "MARÍA BULIAN"
+        "nombre": "MARÍA BULIAN",
+        "fecha_nacimiento": "19-09-1951"
       },
       {
         "numero_paciente": "000056",
-        "nombre": "NORMA ABALLAY"
+        "nombre": "NORMA ABALLAY",
+        "fecha_nacimiento": "19-06-1962"
+      },
+      {
+        "numero_paciente": "000053",
+        "nombre": "MARÍA ARROYO",
+        "fecha_nacimiento": "20-05-1945"
       }
     ]
   },
@@ -33,75 +39,93 @@
     "pacientes": [
       {
         "numero_paciente": "005600030",
-        "nombre": "SUSANA MARTA MUÑOZ"
+        "nombre": "SUSANA MARTA MUÑOZ",
+        "fecha_nacimiento": "16-02-1954"
       },
       {
         "numero_paciente": "005600035",
-        "nombre": "MARCELO ABALLAY"
+        "nombre": "MARCELO ABALLAY",
+        "fecha_nacimiento": "24-12-1963"
       },
       {
         "numero_paciente": "005600207",
-        "nombre": "AGUSTIN VILLARUEL"
+        "nombre": "AGUSTIN VILLARUEL",
+        "fecha_nacimiento": "09-07-1965"
       },
       {
         "numero_paciente": "005600287",
-        "nombre": "DANIEL SALINAS"
+        "nombre": "DANIEL SALINAS",
+        "fecha_nacimiento": "21-02-1974"
       },
       {
         "numero_paciente": "005600336",
-        "nombre": "SILVIA WODA"
+        "nombre": "SILVIA WODA",
+        "fecha_nacimiento": "31-07-1949"
       },
       {
         "numero_paciente": "005600405",
-        "nombre": "ANTONIO MALDONADO"
+        "nombre": "ANTONIO MALDONADO",
+        "fecha_nacimiento": "05-06-1952"
       },
       {
         "numero_paciente": "005600406",
-        "nombre": "JAVIER ORLANDO"
+        "nombre": "JAVIER ORLANDO",
+        "fecha_nacimiento": "17-01-1979"
       },
       {
         "numero_paciente": "005600540",
-        "nombre": "ROQUE BRIZUELA"
+        "nombre": "ROQUE BRIZUELA",
+        "fecha_nacimiento": "18-01-1953"
       },
       {
         "numero_paciente": "005670011",
-        "nombre": "JUAN BECERRA"
+        "nombre": "JUAN BECERRA",
+        "fecha_nacimiento": "31-03-1952"
       },
       {
         "numero_paciente": "005670013",
-        "nombre": "ESTER CORDOBA"
+        "nombre": "ESTER CORDOBA",
+        "fecha_nacimiento": "27-10-1949"
       },
       {
         "numero_paciente": "005670019",
-        "nombre": "CARLOS COPPARI"
+        "nombre": "CARLOS COPPARI",
+        "fecha_nacimiento": "02-10-1944"
       },
       {
         "numero_paciente": "005670024",
-        "nombre": "NORBERTO OLIVERA"
+        "nombre": "NORBERTO OLIVERA",
+        "fecha_nacimiento": "18-09-1959"
       },
       {
         "numero_paciente": "005670034",
-        "nombre": "ANTONIO VERDERRAMA"
+        "nombre": "ANTONIO VERDERRAMA",
+        "fecha_nacimiento": "06-07-1950"
       },
       {
         "numero_paciente": "005670055",
-        "nombre": "JOSE LOZANO"
+        "nombre": "JOSE LOZANO",
+        "fecha_nacimiento": "22-08-1964"
       },
       {
         "numero_paciente": "005670099",
-        "nombre": "IRIS QUINTERO"
+        "nombre": "IRIS QUINTERO",
+        "fecha_nacimiento": "14-02-1955"
       },
       {
         "numero_paciente": "005670125",
-        "nombre": "PEDRO DI SILVESTRI"
+        "nombre": "PEDRO DI SILVESTRI",
+        "fecha_nacimiento": "11-08-1954"
       },
       {
         "numero_paciente": "005670146",
-        "nombre": "JUAN RODRIGUEZ"
+        "nombre": "JUAN RODRIGUEZ",
+        "fecha_nacimiento": "01-09-1956"
       },
       {
         "numero_paciente": "005670194",
-        "nombre": "MARCELO CORTEZ"
+        "nombre": "MARCELO CORTEZ",
+        "fecha_nacimiento": "02-05-1959"
       }
     ]
   },
@@ -110,47 +134,58 @@
     "pacientes": [
       {
         "numero_paciente": "00061",
-        "nombre": "JOSE ESCUDERO"
+        "nombre": "JOSE ESCUDERO",
+        "fecha_nacimiento": "26-06-1966"
       },
       {
         "numero_paciente": "00066",
-        "nombre": "RICARDO PALACIO"
-      },
-      {
-        "numero_paciente": "00176",
-        "nombre": "MIGUEL MORALES"
-      },
-      {
-        "numero_paciente": "00176",
-        "nombre": "MIGUEL ANGEL MOLARES"
-      },
-      {
-        "numero_paciente": "00186",
-        "nombre": "OCAR CHIRINO"
-      },
-      {
-        "numero_paciente": "00284",
-        "nombre": "WALTER ROBLEDO"
-      },
-      {
-        "numero_paciente": "00331",
-        "nombre": "RAMONA PEREZ"
+        "nombre": "RICARDO PALACIO",
+        "fecha_nacimiento": "28-09-1959"
       },
       {
         "numero_paciente": "00447",
-        "nombre": "TERESA GONZALEZ"
+        "nombre": "TERESA GONZALEZ",
+        "fecha_nacimiento": "06-01-1958"
+      },
+      {
+        "numero_paciente": "00176",
+        "nombre": "MIGUEL MORALES",
+        "fecha_nacimiento": "19-06-1952"
+      },
+      {
+        "numero_paciente": "00176",
+        "nombre": "MIGUEL ANGEL MOLARES",
+        "fecha_nacimiento": "19-06-1952"
+      },
+      {
+        "numero_paciente": "00186",
+        "nombre": "OCAR CHIRINO",
+        "fecha_nacimiento": "03-10-1959"
+      },
+      {
+        "numero_paciente": "00284",
+        "nombre": "WALTER ROBLEDO",
+        "fecha_nacimiento": "09-07-1958"
+      },
+      {
+        "numero_paciente": "00331",
+        "nombre": "RAMONA PEREZ",
+        "fecha_nacimiento": "11-06-1971"
       },
       {
         "numero_paciente": "00448",
-        "nombre": "RAMON AGUERO"
+        "nombre": "RAMON AGUERO",
+        "fecha_nacimiento": "08-07-1949"
       },
       {
         "numero_paciente": "00469",
-        "nombre": "OSCAR CARDOZO"
+        "nombre": "OSCAR CARDOZO",
+        "fecha_nacimiento": "20-12-1959"
       },
       {
         "numero_paciente": "00470",
-        "nombre": "FRANCISCO VILLAFAÑE"
+        "nombre": "FRANCISCO VILLAFAÑE",
+        "fecha_nacimiento": "22-01-1951"
       }
     ]
   },
@@ -158,156 +193,199 @@
     "protocolo": "AZ CAMBRIA",
     "pacientes": [
       {
-        "numero_paciente": "AZ",
-        "nombre": "CAMBRIA"
+        "numero_paciente": "E0202503",
+        "nombre": "ALEJANDRA VANESA HERRERA PEREZ",
+        "fecha_nacimiento": "26-12-1976"
       },
       {
-        "numero_paciente": "AZ",
-        "nombre": "CAMBRIA"
-      },
-      {
-        "numero_paciente": "AZ",
-        "nombre": "CAMBRIA"
-      },
-      {
-        "numero_paciente": "E0202005",
-        "nombre": "MARGARITA NIEVES AGUIRRE"
-      },
-      {
-        "numero_paciente": "E0202501",
-        "nombre": "FABIANA MARIANA AGUIRRE"
-      },
-      {
-        "numero_paciente": "E0202504",
-        "nombre": "NACNY GRACIELA VELAZQUEZ"
-      },
-      {
-        "numero_paciente": "E0202505",
-        "nombre": "MIRIAN NOEMI BARBOZA"
-      },
-      {
-        "numero_paciente": "E0202506",
-        "nombre": "GLADYS BEATRIZ TELLO"
-      },
-      {
-        "numero_paciente": "E0202507",
-        "nombre": "STELLA MARIS GIMENEZ"
-      },
-      {
-        "numero_paciente": "E0202508",
-        "nombre": "MARÍA ALEJANDRA MUÑOZ"
-      },
-      {
-        "numero_paciente": "E0202509",
-        "nombre": "MIRTA GLADYS ORMEÑO"
-      },
-      {
-        "numero_paciente": "E0202511",
-        "nombre": "FRANCISCA SUSANA QUIROGA"
-      },
-      {
-        "numero_paciente": "E0202512",
-        "nombre": "FLAVIA LORENA CELAN"
-      },
-      {
-        "numero_paciente": "E0202513",
-        "nombre": "TERESA LEONOR RODRIGUEZ"
-      },
-      {
-        "numero_paciente": "E0202514",
-        "nombre": "PASCUALA ARGENTINA SANCHEZ"
-      },
-      {
-        "numero_paciente": "E0202517",
-        "nombre": "NELSA CRISTINA RIVEROS"
-      },
-      {
-        "numero_paciente": "E0202518",
-        "nombre": "YANINA PAOLA POBLETE SEPULVEDA"
-      },
-      {
-        "numero_paciente": "E0202519",
-        "nombre": "CARMEN YOLANDA BUSTOS"
-      },
-      {
-        "numero_paciente": "E0202520",
-        "nombre": "ALICIA FÁTIMA CANGIALOSI"
-      },
-      {
-        "numero_paciente": "E0202521",
-        "nombre": "ROSA CEFERINA RUARTE"
-      },
-      {
-        "numero_paciente": "E0202522",
-        "nombre": "MARÍA EUGENIA TORRES FIGUEROA"
-      },
-      {
-        "numero_paciente": "E0202523",
-        "nombre": "CRISTINA DEOLINDA PEREYRA"
-      },
-      {
-        "numero_paciente": "E0202524",
-        "nombre": "ANA LUZ CHAVEZ"
-      },
-      {
-        "numero_paciente": "E0202525",
-        "nombre": "GRACIELA NOEMÍ RIVEROS"
-      },
-      {
-        "numero_paciente": "E0202526",
-        "nombre": "MIRTHA BEATRIZ BUSTOS"
-      },
-      {
-        "numero_paciente": "E0202527",
-        "nombre": "NELIDA EVA CARRIZO"
-      },
-      {
-        "numero_paciente": "E0202528",
-        "nombre": "CLAUDIA ANALÍA ANDERSEN"
-      },
-      {
-        "numero_paciente": "E0202529",
-        "nombre": "MARGARITA ABIGAIL RUIZ"
-      },
-      {
-        "numero_paciente": "E0202530",
-        "nombre": "MARÍA ELENA ACOSTA"
-      },
-      {
-        "numero_paciente": "E0202531",
-        "nombre": "ANA ELENA KISIL"
-      },
-      {
-        "numero_paciente": "E0202532",
-        "nombre": "MARÍA ALEJANDRA ARANCIVA SANTANA"
+        "numero_paciente": "E0208006",
+        "nombre": "PETRONA AMALIA MORAN",
+        "fecha_nacimiento": "07-02-1946"
       },
       {
         "numero_paciente": "E0208001",
-        "nombre": "SILVIA MABEL PINTO"
+        "nombre": "E0208001 SILVIA PINTO",
+        "fecha_nacimiento": "26-04-1967"
+      },
+      {
+        "numero_paciente": "E0202005",
+        "nombre": "MARGARITA NIEVES AGUIRRE",
+        "fecha_nacimiento": "20-07-1939"
+      },
+      {
+        "numero_paciente": "E0202501",
+        "nombre": "FABIANA MARIANA AGUIRRE",
+        "fecha_nacimiento": "07-07-1973"
+      },
+      {
+        "numero_paciente": "E0202504",
+        "nombre": "NACNY GRACIELA VELAZQUEZ",
+        "fecha_nacimiento": "10-08-1970"
+      },
+      {
+        "numero_paciente": "E0202505",
+        "nombre": "MIRIAN NOEMI BARBOZA",
+        "fecha_nacimiento": "10-03-1966"
+      },
+      {
+        "numero_paciente": "E0202506",
+        "nombre": "GLADYS BEATRIZ TELLO",
+        "fecha_nacimiento": "31-06-1966"
+      },
+      {
+        "numero_paciente": "E0202507",
+        "nombre": "STELLA MARIS GIMENEZ",
+        "fecha_nacimiento": "12-08-1952"
+      },
+      {
+        "numero_paciente": "E0202508",
+        "nombre": "MARÍA ALEJANDRA MUÑOZ",
+        "fecha_nacimiento": "26-12-1982"
+      },
+      {
+        "numero_paciente": "E0202509",
+        "nombre": "MIRTA GLADYS ORMEÑO",
+        "fecha_nacimiento": "01-11-1958"
+      },
+      {
+        "numero_paciente": "E0202511",
+        "nombre": "FRANCISCA SUSANA QUIROGA",
+        "fecha_nacimiento": "01-01-1956"
+      },
+      {
+        "numero_paciente": "E0202512",
+        "nombre": "FLAVIA LORENA CELAN",
+        "fecha_nacimiento": "13-07-1974"
+      },
+      {
+        "numero_paciente": "E0202513",
+        "nombre": "TERESA LEONOR RODRIGUEZ",
+        "fecha_nacimiento": "27-11-1944"
+      },
+      {
+        "numero_paciente": "E0202514",
+        "nombre": "PASCUALA ARGENTINA SANCHEZ",
+        "fecha_nacimiento": "24-04-1946"
+      },
+      {
+        "numero_paciente": "E0202517",
+        "nombre": "NELSA CRISTINA RIVEROS",
+        "fecha_nacimiento": "14-09-1946"
+      },
+      {
+        "numero_paciente": "E0202518",
+        "nombre": "YANINA PAOLA POBLETE SEPULVEDA",
+        "fecha_nacimiento": "06-02-1980"
+      },
+      {
+        "numero_paciente": "E0202519",
+        "nombre": "CARMEN YOLANDA BUSTOS",
+        "fecha_nacimiento": "19-04-1965"
+      },
+      {
+        "numero_paciente": "E0202520",
+        "nombre": "ALICIA FÁTIMA CANGIALOSI",
+        "fecha_nacimiento": "22-01-1960"
+      },
+      {
+        "numero_paciente": "E0202521",
+        "nombre": "ROSA CEFERINA RUARTE",
+        "fecha_nacimiento": "25-07-1953"
+      },
+      {
+        "numero_paciente": "E0202522",
+        "nombre": "MARÍA EUGENIA TORRES FIGUEROA",
+        "fecha_nacimiento": "11-04-1986"
+      },
+      {
+        "numero_paciente": "E0202523",
+        "nombre": "CRISTINA DEOLINDA PEREYRA",
+        "fecha_nacimiento": "24-06-1983"
+      },
+      {
+        "numero_paciente": "E0202524",
+        "nombre": "ANA LUZ CHAVEZ",
+        "fecha_nacimiento": "03-02-1988"
+      },
+      {
+        "numero_paciente": "E0202525",
+        "nombre": "GRACIELA NOEMÍ RIVEROS",
+        "fecha_nacimiento": "05-02-1980"
+      },
+      {
+        "numero_paciente": "E0202526",
+        "nombre": "MIRTHA BEATRIZ BUSTOS",
+        "fecha_nacimiento": "25-12-1966"
+      },
+      {
+        "numero_paciente": "E0202527",
+        "nombre": "NELIDA EVA CARRIZO",
+        "fecha_nacimiento": "04-02-1971"
+      },
+      {
+        "numero_paciente": "E0202528",
+        "nombre": "CLAUDIA ANALÍA ANDERSEN",
+        "fecha_nacimiento": "23-10-1984"
+      },
+      {
+        "numero_paciente": "E0202529",
+        "nombre": "MARGARITA ABIGAIL RUIZ",
+        "fecha_nacimiento": "13-07-1951"
+      },
+      {
+        "numero_paciente": "E0202530",
+        "nombre": "MARÍA ELENA ACOSTA",
+        "fecha_nacimiento": "09-02-1969"
+      },
+      {
+        "numero_paciente": "E0202531",
+        "nombre": "ANA ELENA KISIL",
+        "fecha_nacimiento": "24-11-1962"
+      },
+      {
+        "numero_paciente": "E0202532",
+        "nombre": "MARÍA ALEJANDRA ARANCIVA SANTANA",
+        "fecha_nacimiento": "20-05-1994"
+      },
+      {
+        "numero_paciente": "E0202533",
+        "nombre": "ROMINA CUELLO",
+        "fecha_nacimiento": "06-01-1986"
+      },
+      {
+        "numero_paciente": "E0208001",
+        "nombre": "SILVIA MABEL PINTO",
+        "fecha_nacimiento": "26-08-1967"
       },
       {
         "numero_paciente": "E0208002",
-        "nombre": "NORMA TEJADA"
+        "nombre": "NORMA TEJADA",
+        "fecha_nacimiento": "14-06-1981"
       },
       {
         "numero_paciente": "E0208003",
-        "nombre": "SILVIA DEL CARMEN MOLINERO"
+        "nombre": "SILVIA DEL CARMEN MOLINERO",
+        "fecha_nacimiento": "13-04-1952"
       },
       {
         "numero_paciente": "E0208003",
-        "nombre": "SILVIA MOLINERO"
+        "nombre": "SILVIA MOLINERO",
+        "fecha_nacimiento": "13-04-1952"
       },
       {
         "numero_paciente": "E0208004",
-        "nombre": "PAULA MARÍA VIDAL GUTIERREZ"
+        "nombre": "PAULA MARÍA VIDAL GUTIERREZ",
+        "fecha_nacimiento": "09-03-1988"
       },
       {
         "numero_paciente": "E0208004",
-        "nombre": "PAULA VIDAL"
+        "nombre": "PAULA VIDAL",
+        "fecha_nacimiento": "09-03-1988"
       },
       {
         "numero_paciente": "E0208005",
-        "nombre": "MARGARITA AGUIRRE"
+        "nombre": "MARGARITA AGUIRRE",
+        "fecha_nacimiento": "20-07-1939"
       }
     ]
   },
@@ -316,7 +394,8 @@
     "pacientes": [
       {
         "numero_paciente": "4600001",
-        "nombre": "MARISA EDITH MOLINA"
+        "nombre": "MARISA EDITH MOLINA",
+        "fecha_nacimiento": "04-02-1968"
       }
     ]
   },
@@ -324,140 +403,174 @@
     "protocolo": "DAIICHI",
     "pacientes": [
       {
-        "numero_paciente": "17055001",
-        "nombre": "RAMONA VEGA"
-      },
-      {
-        "numero_paciente": "17055002",
-        "nombre": "NORA FIRMAPAZ"
-      },
-      {
-        "numero_paciente": "17055003",
-        "nombre": "MARIA GEMA MONARDEZ"
-      },
-      {
-        "numero_paciente": "17055004",
-        "nombre": "VILMA GONZALEZ RODRIGUEZ"
-      },
-      {
         "numero_paciente": "17055005",
-        "nombre": "ALICIA ABALLAY"
-      },
-      {
-        "numero_paciente": "17055006",
-        "nombre": "EDITH FLORES"
-      },
-      {
-        "numero_paciente": "17055007",
-        "nombre": "LILIANA CRUZ"
-      },
-      {
-        "numero_paciente": "17055008",
-        "nombre": "MARIA FERNANDA PORRETTI"
-      },
-      {
-        "numero_paciente": "17055009",
-        "nombre": "LIDIA PICCONI"
-      },
-      {
-        "numero_paciente": "17055010",
-        "nombre": "SONIA GALDEANO"
-      },
-      {
-        "numero_paciente": "17055011",
-        "nombre": "MARIELA VIDELA"
-      },
-      {
-        "numero_paciente": "17055012",
-        "nombre": "ROMINA GONZALEZ"
-      },
-      {
-        "numero_paciente": "17055013",
-        "nombre": "SONIA VERA"
-      },
-      {
-        "numero_paciente": "17055014",
-        "nombre": "SANDRA LLANO"
-      },
-      {
-        "numero_paciente": "17055015",
-        "nombre": "CLAUDIA ARRIOLA"
-      },
-      {
-        "numero_paciente": "17055016",
-        "nombre": "OLGA NUÑEZ"
-      },
-      {
-        "numero_paciente": "54050001",
-        "nombre": "FELICIANO LEDESMA"
-      },
-      {
-        "numero_paciente": "54050002",
-        "nombre": "Falla de screening"
-      },
-      {
-        "numero_paciente": "54050004",
-        "nombre": "JORGE RAFAEL ROFRIGUEZ"
-      },
-      {
-        "numero_paciente": "54050005",
-        "nombre": "OSCAR JUAN DULITSKY"
-      },
-      {
-        "numero_paciente": "54050007",
-        "nombre": "WALTER RAUL CARRIZO"
-      },
-      {
-        "numero_paciente": "54050008",
-        "nombre": "GRACIELA FANY PAZCELI"
-      },
-      {
-        "numero_paciente": "54050009",
-        "nombre": "OSCAR NEMESIO SAMORÉ"
-      },
-      {
-        "numero_paciente": "54050010",
-        "nombre": "RICARDO ANTONIO LONIGRO"
+        "nombre": "ALICIA ABALLAY",
+        "fecha_nacimiento": "31-06-1966"
       },
       {
         "numero_paciente": "54050012",
-        "nombre": "GILBERTO HARLINTON FERNANDEZ"
-      },
-      {
-        "numero_paciente": "54071001",
-        "nombre": "RAMÓN GUILLERMO SPINDOLA"
-      },
-      {
-        "numero_paciente": "54071002",
-        "nombre": "SANTIAGO ENRRIQUE RODRIGUEZ"
+        "nombre": "GILBERTO HARLINTON FERNANDEZ",
+        "fecha_nacimiento": "14-06-1944"
       },
       {
         "numero_paciente": "54071003",
-        "nombre": "MANUEL FRANCISCO LOPEZ"
+        "nombre": "MANUEL FRANCISCO LOPEZ",
+        "fecha_nacimiento": "10-01-1951"
+      },
+      {
+        "numero_paciente": "17055001",
+        "nombre": "RAMONA VEGA 10808129",
+        "fecha_nacimiento": ""
+      },
+      {
+        "numero_paciente": "17055002",
+        "nombre": "NORA FIRMAPAZ",
+        "fecha_nacimiento": "05-01-1969"
+      },
+      {
+        "numero_paciente": "17055003",
+        "nombre": "MARIA GEMA MONARDEZ",
+        "fecha_nacimiento": "29-09-1984"
+      },
+      {
+        "numero_paciente": "17055004",
+        "nombre": "VILMA GONZALEZ RODRIGUEZ",
+        "fecha_nacimiento": "10-12-1986"
+      },
+      {
+        "numero_paciente": "17055006",
+        "nombre": "EDITH FLORES",
+        "fecha_nacimiento": "20-11-1972"
+      },
+      {
+        "numero_paciente": "17055007",
+        "nombre": "LILIANA CRUZ",
+        "fecha_nacimiento": "05-06-1957"
+      },
+      {
+        "numero_paciente": "17055008",
+        "nombre": "MARIA FERNANDA PORRETTI",
+        "fecha_nacimiento": "14-11-1978"
+      },
+      {
+        "numero_paciente": "17055009",
+        "nombre": "LIDIA PICCONI",
+        "fecha_nacimiento": "08-12-1948"
+      },
+      {
+        "numero_paciente": "17055010",
+        "nombre": "SONIA GALDEANO",
+        "fecha_nacimiento": "15-05-1977"
+      },
+      {
+        "numero_paciente": "17055011",
+        "nombre": "MARIELA VIDELA",
+        "fecha_nacimiento": "20-03-1975"
+      },
+      {
+        "numero_paciente": "17055012",
+        "nombre": "ROMINA GONZALEZ",
+        "fecha_nacimiento": "09-02-1989"
+      },
+      {
+        "numero_paciente": "17055013",
+        "nombre": "SONIA VERA",
+        "fecha_nacimiento": "23-10-1967"
+      },
+      {
+        "numero_paciente": "17055014",
+        "nombre": "SANDRA LLANO",
+        "fecha_nacimiento": "05-02-1967"
+      },
+      {
+        "numero_paciente": "17055015",
+        "nombre": "CLAUDIA ARRIOLA",
+        "fecha_nacimiento": "31-01-1975"
+      },
+      {
+        "numero_paciente": "17055016",
+        "nombre": "OLGA NUÑEZ",
+        "fecha_nacimiento": "29-06-1981"
+      },
+      {
+        "numero_paciente": "54050001",
+        "nombre": "FELICIANO LEDESMA",
+        "fecha_nacimiento": "09-03-1955"
+      },
+      {
+        "numero_paciente": "54050002",
+        "nombre": "Falla de screening",
+        "fecha_nacimiento": ""
+      },
+      {
+        "numero_paciente": "54050004",
+        "nombre": "JORGE RAFAEL ROFRIGUEZ",
+        "fecha_nacimiento": "24-09-1965"
+      },
+      {
+        "numero_paciente": "54050005",
+        "nombre": "OSCAR JUAN DULITSKY",
+        "fecha_nacimiento": "28-05-1951"
+      },
+      {
+        "numero_paciente": "54050007",
+        "nombre": "WALTER RAUL CARRIZO",
+        "fecha_nacimiento": "16-03-1959"
+      },
+      {
+        "numero_paciente": "54050008",
+        "nombre": "GRACIELA FANY PAZCELI",
+        "fecha_nacimiento": "20-10-1956"
+      },
+      {
+        "numero_paciente": "54050009",
+        "nombre": "OSCAR NEMESIO SAMORÉ",
+        "fecha_nacimiento": "01-12-1957"
+      },
+      {
+        "numero_paciente": "54050010",
+        "nombre": "RICARDO ANTONIO LONIGRO",
+        "fecha_nacimiento": "31-01-1956"
+      },
+      {
+        "numero_paciente": "54071001",
+        "nombre": "RAMÓN GUILLERMO SPINDOLA",
+        "fecha_nacimiento": "05-02-1956"
+      },
+      {
+        "numero_paciente": "54071002",
+        "nombre": "SANTIAGO ENRRIQUE RODRIGUEZ",
+        "fecha_nacimiento": "20-07-1954"
       },
       {
         "numero_paciente": "54071004",
-        "nombre": "JUAN FLORENCIO CASTRO"
+        "nombre": "JUAN FLORENCIO CASTRO",
+        "fecha_nacimiento": "15-10-1943"
       },
       {
         "numero_paciente": "54071005",
-        "nombre": "ALDO FERNANDO SANCHEZ"
+        "nombre": "ALDO FERNANDO SANCHEZ",
+        "fecha_nacimiento": "30-05-1950"
       },
       {
         "numero_paciente": "54071006",
-        "nombre": "PABLO MARTÍN"
+        "nombre": "PABLO MARTÍN",
+        "fecha_nacimiento": "23-03-1949"
       },
       {
         "numero_paciente": "540500006",
-        "nombre": "CARLOS ALBERTO BOUQUET"
+        "nombre": "CARLOS ALBERTO BOUQUET",
+        "fecha_nacimiento": "16-05-1950"
       },
       {
         "numero_paciente": "540500011",
-        "nombre": "MARÍA DEL CARMEN GUTIERRES"
+        "nombre": "MARÍA DEL CARMEN GUTIERREZ",
+        "fecha_nacimiento": "22-03-1949"
       },
       {
         "numero_paciente": "540500015",
-        "nombre": "PERO MARTÍN NEIRA"
+        "nombre": "PERO MARTÍN NEIRA",
+        "fecha_nacimiento": "13-05-1985"
       }
     ]
   },
@@ -465,24 +578,29 @@
     "protocolo": "GN",
     "pacientes": [
       {
+        "numero_paciente": "500588-80403",
+        "nombre": "TAPIA JESICA",
+        "fecha_nacimiento": "13-09-1995"
+      },
+      {
         "numero_paciente": "500610-8413",
-        "nombre": "ESTEBAN PACHECO"
+        "nombre": "ESTEBAN PACHECO",
+        "fecha_nacimiento": "03-06-2000"
       },
       {
         "numero_paciente": "500586-80397",
-        "nombre": "VALENTINA PELEGRINI"
-      },
-      {
-        "numero_paciente": "500588-80403",
-        "nombre": "TAPIA JESICA"
+        "nombre": "VALENTINA PELEGRINI",
+        "fecha_nacimiento": "10-10-1998"
       },
       {
         "numero_paciente": "500666-80434",
-        "nombre": "FRANCO DARIO ACIAR"
+        "nombre": "FRANCO DARIO ACIAR",
+        "fecha_nacimiento": "08-11-1995"
       },
       {
         "numero_paciente": "500886-80591",
-        "nombre": "CAEROLINA VARGAS"
+        "nombre": "CAEROLINA VARGAS",
+        "fecha_nacimiento": "06-07-1980"
       }
     ]
   },
@@ -490,36 +608,49 @@
     "protocolo": "GO",
     "pacientes": [
       {
+        "numero_paciente": "202174/61619",
+        "nombre": "LILIANA AGUIRRE",
+        "fecha_nacimiento": "05-10-1978"
+      },
+      {
+        "numero_paciente": "201030/60768",
+        "nombre": "ERICA VARGAS",
+        "fecha_nacimiento": ""
+      },
+      {
         "numero_paciente": "201188/60868",
-        "nombre": "MARTA REBECHI"
+        "nombre": "MARTA REBECHI",
+        "fecha_nacimiento": "29-08-1952"
       },
       {
         "numero_paciente": "201258/60934",
-        "nombre": "AZUCENA VILLAFAÑE"
+        "nombre": "AZUCENA VILLAFAÑE",
+        "fecha_nacimiento": "17-12-1950"
       },
       {
         "numero_paciente": "201389/61019",
-        "nombre": "MABEL MERELES"
+        "nombre": "MABEL MERELES",
+        "fecha_nacimiento": "12-03-1961"
       },
       {
         "numero_paciente": "201672/61242",
-        "nombre": "ALICIA ORO"
+        "nombre": "ALICIA ORO",
+        "fecha_nacimiento": "28-01-1938"
       },
       {
         "numero_paciente": "201721/61253",
-        "nombre": "ELIANA SCHALL"
+        "nombre": "ELIANA SCHALL",
+        "fecha_nacimiento": "21-08-1951"
       },
       {
         "numero_paciente": "201791/61306",
-        "nombre": "FLAVIA ESCUDERO"
+        "nombre": "FLAVIA ESCUDERO",
+        "fecha_nacimiento": "27-06-1980"
       },
       {
         "numero_paciente": "202084/61552",
-        "nombre": "SILVIA OCAÑA"
-      },
-      {
-        "numero_paciente": "202174/61619",
-        "nombre": "LILIANA AGUIRRE"
+        "nombre": "SILVIA OCAÑA",
+        "fecha_nacimiento": "05-10-1965"
       }
     ]
   },
@@ -527,77 +658,94 @@
     "protocolo": "GPIJ",
     "pacientes": [
       {
+        "numero_paciente": "68453",
+        "nombre": "ALFREDO PALACIO",
+        "fecha_nacimiento": "06-10-1968"
+      },
+      {
         "numero_paciente": "58339",
-        "nombre": "FERNANDO RONS ODENA"
+        "nombre": "FERNANDO PONS ODENA",
+        "fecha_nacimiento": "06-07-1979"
       },
       {
         "numero_paciente": "58359",
-        "nombre": "SERGIO GAHONA"
+        "nombre": "SERGIO GAHONA",
+        "fecha_nacimiento": "17-07-1964"
       },
       {
         "numero_paciente": "59876",
-        "nombre": "JUAN JOSÉ RUJOVICH"
+        "nombre": "JUAN JOSÉ RUJOVICH",
+        "fecha_nacimiento": "19-10-1951"
       },
       {
         "numero_paciente": "61316",
-        "nombre": "MARÍA ROSA GODOY"
+        "nombre": "MARÍA ROSA GODOY",
+        "fecha_nacimiento": "28-03-1955"
       },
       {
         "numero_paciente": "61956",
-        "nombre": "SALVADOR ACOMANDO"
+        "nombre": "SALVADOR ACOMANDO",
+        "fecha_nacimiento": "08-02-1958"
       },
       {
         "numero_paciente": "63274",
-        "nombre": "ALBERTO GOMEZ"
+        "nombre": "ALBERTO GOMEZ",
+        "fecha_nacimiento": "13-10-1971"
       },
       {
         "numero_paciente": "63275",
-        "nombre": "JORGE RUADES"
+        "nombre": "JORGE RUADES",
+        "fecha_nacimiento": "02-02-1978"
       },
       {
         "numero_paciente": "64159",
-        "nombre": "MIRTA BEATRIZ MARTINEZ"
+        "nombre": "MIRTA BEATRIZ MARTINEZ",
+        "fecha_nacimiento": "23-02-1958"
       },
       {
         "numero_paciente": "64321",
-        "nombre": "MARÍA FERNANDEZ"
+        "nombre": "MARÍA FERNANDEZ",
+        "fecha_nacimiento": "27-12-1954"
       },
       {
         "numero_paciente": "66460",
-        "nombre": "JORGE TELLO"
+        "nombre": "JORGE TELLO",
+        "fecha_nacimiento": "17-09-1969"
       },
       {
         "numero_paciente": "68071",
-        "nombre": "CARLOS LOZANO"
-      },
-      {
-        "numero_paciente": "68453",
-        "nombre": "ALFREDO PALACIO"
+        "nombre": "CARLOS LOZANO",
+        "fecha_nacimiento": "10-11-1959"
       }
     ]
   },
   {
-    "protocolo": "HEREDERA",
+    "protocolo": "HEREDERA/WO43571",
     "pacientes": [
       {
+        "numero_paciente": "101298-10830",
+        "nombre": "MARTHA ABALLAY",
+        "fecha_nacimiento": "11-11-1953"
+      },
+      {
         "numero_paciente": "100630-10384",
-        "nombre": "LIDIA OVIEDO"
+        "nombre": "LIDIA OVIEDO",
+        "fecha_nacimiento": "05-10-1960"
       },
       {
         "numero_paciente": "100751-10468",
-        "nombre": "LAURA DIAZ"
+        "nombre": "LAURA DIAZ",
+        "fecha_nacimiento": "21-11-1981"
       },
       {
         "numero_paciente": "100978-10604",
-        "nombre": "SUSANA DOMINGUEZ"
+        "nombre": "SUSANA DOMINGUEZ",
+        "fecha_nacimiento": "17-05-1954"
       },
       {
         "numero_paciente": "101086-10675",
-        "nombre": "MIRYAM QUUETGLAS"
-      },
-      {
-        "numero_paciente": "101298-10830",
-        "nombre": "MARTHA ABALLAY"
+        "nombre": "MIRYAM QUUETGLAS",
+        "fecha_nacimiento": "04-05-1966"
       }
     ]
   },
@@ -605,24 +753,29 @@
     "protocolo": "HZNP",
     "pacientes": [
       {
-        "numero_paciente": "304",
-        "nombre": "AR"
+        "numero_paciente": "AR 1391-1001",
+        "nombre": "",
+        "fecha_nacimiento": ""
       },
       {
-        "numero_paciente": "1391-1002",
-        "nombre": "ESTER SOSA"
+        "numero_paciente": "AR 1391-1002",
+        "nombre": "ESTER SOSA",
+        "fecha_nacimiento": "01-08-1961"
       },
       {
-        "numero_paciente": "1391-1003",
-        "nombre": "ROGELIA GLADYS PAEZ"
+        "numero_paciente": "AR 1391-1003",
+        "nombre": "ROGELIA GLADYS PAEZ",
+        "fecha_nacimiento": "03-06-1953"
       },
       {
-        "numero_paciente": "1391-1004",
-        "nombre": "MONICA JACQUELINE ROMERO"
+        "numero_paciente": "AR 1391-1004",
+        "nombre": "MONICA JACQUELINE ROMERO (falla de screening)",
+        "fecha_nacimiento": "21-12-1966"
       },
       {
-        "numero_paciente": "1391-1005",
-        "nombre": "VIRGINIA MABEL YAVEL"
+        "numero_paciente": "AR 1391-1005",
+        "nombre": "VIRGINIA MABEL YAVEL",
+        "fecha_nacimiento": "11-08-1967"
       }
     ]
   },
@@ -630,12 +783,14 @@
     "protocolo": "IM026024",
     "pacientes": [
       {
-        "numero_paciente": "004100085",
-        "nombre": "GILDA FERNANDEZ"
+        "numero_paciente": "004100237",
+        "nombre": "MILAGROS OLMEDO",
+        "fecha_nacimiento": "15-01-2000"
       },
       {
-        "numero_paciente": "004100237",
-        "nombre": "MILAGROS OLMEDO"
+        "numero_paciente": "004100085",
+        "nombre": "GILDA FERNANDEZ",
+        "fecha_nacimiento": "12-09-1991"
       }
     ]
   },
@@ -643,20 +798,39 @@
     "protocolo": "IRIS",
     "pacientes": [
       {
+        "numero_paciente": "E02025003",
+        "nombre": "ULISES MIGUEL ACOSTA (FALLA SCREEN",
+        "fecha_nacimiento": "27-05-2004"
+      },
+      {
         "numero_paciente": "E02025001",
-        "nombre": "MARCELA ABALLAY"
+        "nombre": "MARCELA ABALLAY (FALLA SCREEN",
+        "fecha_nacimiento": "11-04-1982"
       },
       {
         "numero_paciente": "E02025002",
-        "nombre": "ELIZABETH ANDREA LARRIBITE"
-      },
-      {
-        "numero_paciente": "E02025003",
-        "nombre": "ULISES MIGUEL ACOSTA"
+        "nombre": "ELIZABETH ANDREA LARRIBITE",
+        "fecha_nacimiento": "18-02-1986"
       },
       {
         "numero_paciente": "E02025004",
-        "nombre": "ROCIO BELEN PAEZ"
+        "nombre": "ROCIO BELEN PAEZ",
+        "fecha_nacimiento": "09-01-1988"
+      },
+      {
+        "numero_paciente": "E02025005",
+        "nombre": "ALFREDO CORREA",
+        "fecha_nacimiento": "23-06-1982"
+      }
+    ]
+  },
+  {
+    "protocolo": "689",
+    "pacientes": [
+      {
+        "numero_paciente": "001000002-145616",
+        "nombre": "JUAN CARLOS CHIRINO",
+        "fecha_nacimiento": "19-09-1954"
       }
     ]
   },
@@ -664,124 +838,149 @@
     "protocolo": "JPCF",
     "pacientes": [
       {
+        "numero_paciente": "4425",
+        "nombre": "MARÍA DEL CARMEN ALBORNOZ",
+        "fecha_nacimiento": "11-05-1965"
+      },
+      {
         "numero_paciente": "1256",
-        "nombre": "ROXANA CARINA BALLARIO"
+        "nombre": "ROXANA CARINA BALLARIO",
+        "fecha_nacimiento": "08-09-1972"
       },
       {
         "numero_paciente": "1260",
-        "nombre": "MARÍA ESTER PARADA"
+        "nombre": "MARÍA ESTER PARADA",
+        "fecha_nacimiento": "19-09-1948"
       },
       {
         "numero_paciente": "1507",
-        "nombre": "ANDREA SUSANA PEREZ"
+        "nombre": "ANDREA SUSANA PEREZ",
+        "fecha_nacimiento": "07-11-1968"
       },
       {
         "numero_paciente": "1536",
-        "nombre": "MARÍA PATRICIA CEJAS"
+        "nombre": "MARÍA PATRICIA CEJAS",
+        "fecha_nacimiento": "25-05-1950"
       },
       {
         "numero_paciente": "1662",
-        "nombre": "JAVIER EDUARDO LEMOS"
+        "nombre": "JAVIER EDUARDO LEMOS",
+        "fecha_nacimiento": "05-05-1974"
       },
       {
         "numero_paciente": "1746",
-        "nombre": "AURORA SANTANA"
+        "nombre": "AURORA SANTANA  2645158542 2645634181",
+        "fecha_nacimiento": "01-03-1977"
       },
       {
         "numero_paciente": "1801",
-        "nombre": "NIDIA INES BUFFAGNI"
+        "nombre": "NIDIA INES BUFFAGNI",
+        "fecha_nacimiento": "02-10-1956"
       },
       {
         "numero_paciente": "1822",
-        "nombre": "LAURA PATRICIA AGUERO"
+        "nombre": "LAURA PATRICIA AGUERO",
+        "fecha_nacimiento": "09-07-1967"
       },
       {
         "numero_paciente": "2018",
-        "nombre": "TERESITA JOSEFINA NACIF"
+        "nombre": "TERESITA JOSEFINA NACIF",
+        "fecha_nacimiento": "01-10-1958"
       },
       {
         "numero_paciente": "2325",
-        "nombre": "CLAUDIA LILIANA SUAREZ"
+        "nombre": "CLAUDIA LILIANA SUAREZ",
+        "fecha_nacimiento": "14-02-1972"
       },
       {
         "numero_paciente": "3193",
-        "nombre": "VIVIANA MYRIAM ESTEO"
+        "nombre": "VIVIANA MYRIAM ESTEO",
+        "fecha_nacimiento": "25-09-1967"
       },
       {
         "numero_paciente": "3465",
-        "nombre": "ANGELA TORRES"
+        "nombre": "ANGELA TORRES",
+        "fecha_nacimiento": "23-02-1973"
       },
       {
         "numero_paciente": "4293",
-        "nombre": "SANDRA ELIZABETH ANTUÑA"
+        "nombre": "SANDRA ELIZABETH ANTUÑA",
+        "fecha_nacimiento": "14-12-1969"
       },
       {
         "numero_paciente": "4299",
-        "nombre": "SUSANA SARA ALCARAZ"
+        "nombre": "SUSANA SARA ALCARAZ  2645876990 2974526940",
+        "fecha_nacimiento": "26-03-1956"
       },
       {
         "numero_paciente": "4395",
-        "nombre": "CRISTINA BARBARITA SANCHEZ"
-      },
-      {
-        "numero_paciente": "4425",
-        "nombre": "MARÍA DEL CARMEN ALBORNOZ"
+        "nombre": "CRISTINA BARBARITA SANCHEZ",
+        "fecha_nacimiento": "11-08-1969"
       },
       {
         "numero_paciente": "4564",
-        "nombre": "ADELINA AGUERO"
+        "nombre": "ADELINA AGUERO",
+        "fecha_nacimiento": "28-09-1938"
       },
       {
         "numero_paciente": "4668",
-        "nombre": "ANGELA MATURANO"
+        "nombre": "ANGELA MATURANO",
+        "fecha_nacimiento": "02-08-1954"
       },
       {
         "numero_paciente": "5178",
-        "nombre": "ROSA GUILLERMINA ZALAZAR"
+        "nombre": "ROSA GUILLERMINA ZALAZAR",
+        "fecha_nacimiento": "10-04-1952"
       },
       {
         "numero_paciente": "5855",
-        "nombre": "ELB A RAMONA BUSTOS"
+        "nombre": "ELB A RAMONA BUSTOS",
+        "fecha_nacimiento": "01-01-1957"
       },
       {
         "numero_paciente": "6004",
-        "nombre": "ALICIA BEATRIZ AGUILERA"
+        "nombre": "ALICIA BEATRIZ AGUILERA",
+        "fecha_nacimiento": "02-08-1969"
       },
       {
         "numero_paciente": "6008",
-        "nombre": "MARÍA ESTER BLANCO"
+        "nombre": "MARÍA ESTER BLANCO",
+        "fecha_nacimiento": "23-11-1946"
       },
       {
         "numero_paciente": "7597",
-        "nombre": "SUSANA AMIRA QUINTERO"
+        "nombre": "SUSANA AMIRA QUINTERO",
+        "fecha_nacimiento": "22-03-1945"
       },
       {
         "numero_paciente": "8097",
-        "nombre": "MARIANA ANDREA VARGAS"
+        "nombre": "MARIANA ANDREA VARGAS",
+        "fecha_nacimiento": "19-10-1972"
       },
       {
         "numero_paciente": "8236",
-        "nombre": "LORENA CERF"
+        "nombre": "LORENA CERF  2645679980 2645759419",
+        "fecha_nacimiento": "26-08-1977"
       },
       {
         "numero_paciente": "9419",
-        "nombre": "SILVIA MABEL PINTO"
+        "nombre": "SILVIA MABEL PINTO",
+        "fecha_nacimiento": "26-08-1967"
       },
       {
         "numero_paciente": "9702",
-        "nombre": "GABRIEL ALEJANDRA VIDELA"
+        "nombre": "GABRIEL ALEJANDRA VIDELA",
+        "fecha_nacimiento": "01-02-1986"
       },
       {
         "numero_paciente": "9717",
-        "nombre": "NELIDA DEL CARMEN ELIZONDO"
+        "nombre": "NELIDA DEL CARMEN ELIZONDO",
+        "fecha_nacimiento": "30-10-1950"
       },
       {
         "numero_paciente": "9919",
-        "nombre": "NORMA BEATRIZ TEJADA"
-      },
-      {
-        "numero_paciente": "001000002-145616",
-        "nombre": "JUAN CARLOS CHIRINO"
+        "nombre": "NORMA BEATRIZ TEJADA",
+        "fecha_nacimiento": "14-06-1981"
       }
     ]
   },
@@ -789,60 +988,74 @@
     "protocolo": "JPEF",
     "pacientes": [
       {
+        "numero_paciente": "10073",
+        "nombre": "CLAUDIA BELLIDO",
+        "fecha_nacimiento": "23-03-1977"
+      },
+      {
         "numero_paciente": "10035",
-        "nombre": "CATALINA SALINAS"
+        "nombre": "CATALINA SALINAS",
+        "fecha_nacimiento": "30-04-1953"
       },
       {
         "numero_paciente": "10039",
-        "nombre": "RAMONA MARTINEZ"
+        "nombre": "RAMONA MARTINEZ",
+        "fecha_nacimiento": "02/04/1950"
       },
       {
         "numero_paciente": "10062",
-        "nombre": "MARIA SOELDAD CHADA"
-      },
-      {
-        "numero_paciente": "10073",
-        "nombre": "CLAUDIA BELLIDO"
+        "nombre": "MARIA SOELDAD CHADA",
+        "fecha_nacimiento": "10-09-1976"
       },
       {
         "numero_paciente": "10093",
-        "nombre": "RAMONA AMALIA BAIGORRIA"
+        "nombre": "RAMONA AMALIA BAIGORRIA",
+        "fecha_nacimiento": "08-11-1962"
       },
       {
         "numero_paciente": "10107",
-        "nombre": "MARCELA ISABEL RODRIGUEZ"
+        "nombre": "MARCELA ISABEL RODRIGUEZ",
+        "fecha_nacimiento": "22-04-1974"
       },
       {
         "numero_paciente": "10131",
-        "nombre": "JUAN EUSEBIO CANO"
+        "nombre": "JUAN EUSEBIO CANO",
+        "fecha_nacimiento": "24-12-1958"
       },
       {
         "numero_paciente": "10169",
-        "nombre": "MANUEL PUERTAS"
+        "nombre": "MANUEL PUERTAS",
+        "fecha_nacimiento": "15/08/1949"
       },
       {
         "numero_paciente": "10182",
-        "nombre": "ANGELA TORRES"
+        "nombre": "ANGELA TORRES",
+        "fecha_nacimiento": "23-02-1973"
       },
       {
         "numero_paciente": "10219",
-        "nombre": "ROBERTO ROMERO"
+        "nombre": "ROBERTO ROMERO",
+        "fecha_nacimiento": "13-05-1956"
       },
       {
         "numero_paciente": "10263",
-        "nombre": "YOLANDA SANTANA"
+        "nombre": "YOLANDA SANTANA",
+        "fecha_nacimiento": "01-09-1957"
       },
       {
         "numero_paciente": "10308",
-        "nombre": "MAYRA VALENZUELA"
+        "nombre": "MAYRA VALENZUELA",
+        "fecha_nacimiento": "25-04-1988"
       },
       {
         "numero_paciente": "10314",
-        "nombre": "YOLANDA SANTANA"
+        "nombre": "YOLANDA SANTANA",
+        "fecha_nacimiento": "01-09-1957"
       },
       {
         "numero_paciente": "10418",
-        "nombre": "DORA ALGANARAZ"
+        "nombre": "DORA ALGANARAZ",
+        "fecha_nacimiento": "05-08-1953"
       }
     ]
   },
@@ -851,35 +1064,43 @@
     "pacientes": [
       {
         "numero_paciente": "10166",
-        "nombre": "VALENTÍN HUGO SILVA"
+        "nombre": "VALENTÍN HUGO SILVA",
+        "fecha_nacimiento": "14-02-1941"
       },
       {
         "numero_paciente": "10191",
-        "nombre": "PRÓSPERO TESTAI"
+        "nombre": "PRÓSPERO TESTAI",
+        "fecha_nacimiento": "14-07-1946"
       },
       {
         "numero_paciente": "10193",
-        "nombre": "JOSÉ ANTONIO BARRIONUEVO"
+        "nombre": "JOSÉ ANTONIO BARRIONUEVO",
+        "fecha_nacimiento": "18-09-1947"
       },
       {
         "numero_paciente": "10219",
-        "nombre": "ROBERTO CARLOS ROMERO"
+        "nombre": "ROBERTO CARLOS ROMERO",
+        "fecha_nacimiento": "13-05-1956"
       },
       {
         "numero_paciente": "10429",
-        "nombre": "MANUEL MESTRE"
+        "nombre": "MANUEL MESTRE",
+        "fecha_nacimiento": "16-09-1949"
       },
       {
         "numero_paciente": "10435",
-        "nombre": "CARLOS RAFAEL RUIZ"
+        "nombre": "CARLOS RAFAEL RUIZ",
+        "fecha_nacimiento": "17-11-1952"
       },
       {
         "numero_paciente": "10645",
-        "nombre": "AURELIO OSCAR TORRES"
+        "nombre": "AURELIO OSCAR TORRES",
+        "fecha_nacimiento": "12-11-1960"
       },
       {
         "numero_paciente": "10954",
-        "nombre": "JUAN TOMÁS DIAZ"
+        "nombre": "JUAN TOMÁS DIAZ 10-100-1939",
+        "fecha_nacimiento": ""
       }
     ]
   },
@@ -888,100 +1109,123 @@
     "pacientes": [
       {
         "numero_paciente": "10997",
-        "nombre": "IRMA VIDELA"
+        "nombre": "IRMA VIDELA",
+        "fecha_nacimiento": "17-09-1972"
       },
       {
         "numero_paciente": "11117",
-        "nombre": "FABIANA GONZALEZ"
+        "nombre": "FABIANA GONZALEZ",
+        "fecha_nacimiento": "18-08-1966"
       },
       {
         "numero_paciente": "11687",
-        "nombre": "CRISTINA SANCHEZ"
+        "nombre": "CRISTINA SANCHEZ",
+        "fecha_nacimiento": "11-08-1969"
       },
       {
         "numero_paciente": "11877",
-        "nombre": "ESTELA ORTIZ"
+        "nombre": "ESTELA ORTIZ",
+        "fecha_nacimiento": "05-11-1959"
       },
       {
         "numero_paciente": "12338",
-        "nombre": "MARIA ESTER BLANCO"
+        "nombre": "MARIA ESTER BLANCO",
+        "fecha_nacimiento": "23-11-1946"
       },
       {
         "numero_paciente": "12340",
-        "nombre": "LORENA CERT"
+        "nombre": "LORENA CERT",
+        "fecha_nacimiento": "26-08-1977"
       },
       {
         "numero_paciente": "12342",
-        "nombre": "GABRIELA VIDELA"
+        "nombre": "GABRIELA VIDELA",
+        "fecha_nacimiento": "01-02-1986"
       },
       {
         "numero_paciente": "12344",
-        "nombre": "NELIDA ELIZONDO"
+        "nombre": "NELIDA ELIZONDO",
+        "fecha_nacimiento": "30-10-1950"
       },
       {
         "numero_paciente": "12556",
-        "nombre": "MARIA ELENA AGUIRRE"
+        "nombre": "MARIA ELENA AGUIRRE",
+        "fecha_nacimiento": "27-10-1955"
       },
       {
         "numero_paciente": "12925",
-        "nombre": "VELASCO ANDREA"
+        "nombre": "VELASCO ANDREA",
+        "fecha_nacimiento": "10-04-1969"
       },
       {
         "numero_paciente": "12952",
-        "nombre": "AURORA ALDECO"
+        "nombre": "AURORA ALDECO",
+        "fecha_nacimiento": "11-11-1944"
       },
       {
         "numero_paciente": "13668",
-        "nombre": "LEONOR ORO"
+        "nombre": "LEONOR ORO",
+        "fecha_nacimiento": "14-11-1956"
       },
       {
         "numero_paciente": "14567",
-        "nombre": "ANALIA PAEZ"
+        "nombre": "ANALIA PAEZ",
+        "fecha_nacimiento": "18-07-1972"
       },
       {
         "numero_paciente": "14614",
-        "nombre": "MARIA MAZA"
+        "nombre": "MARIA MAZA",
+        "fecha_nacimiento": "23-08-1947"
       },
       {
         "numero_paciente": "14784",
-        "nombre": "BEATRIZ PALACIO"
+        "nombre": "BEATRIZ PALACIO",
+        "fecha_nacimiento": "27-10-1960"
       },
       {
         "numero_paciente": "16583",
-        "nombre": "SONIA HEREDIA"
+        "nombre": "SONIA HEREDIA",
+        "fecha_nacimiento": "16-03-1969"
       },
       {
         "numero_paciente": "16857",
-        "nombre": "LEONILDA OLIVERA"
+        "nombre": "LEONILDA OLIVERA",
+        "fecha_nacimiento": "28-12-1939"
       },
       {
         "numero_paciente": "18672",
-        "nombre": "IVANA ACOSTA"
+        "nombre": "IVANA ACOSTA",
+        "fecha_nacimiento": "21-07-1975"
       }
     ]
   },
   {
-    "protocolo": "M50048",
+    "protocolo": "M50048 (WILLOW) ",
     "pacientes": [
       {
         "numero_paciente": "1050001",
-        "nombre": "ISIDRO LUCIANO ORMEÑO"
+        "nombre": "ISIDRO LUCIANO ORMEÑO",
+        "fecha_nacimiento": "08-10-1958"
       },
       {
         "numero_paciente": "1050002",
-        "nombre": "NELLY ESTER DOMINGUEZ"
+        "nombre": "NELLY ESTER DOMINGUEZ",
+        "fecha_nacimiento": "0-04-1958"
       },
       {
         "numero_paciente": "1050004",
-        "nombre": "CARINA JOFRÉ"
+        "nombre": "CARINA JOFRÉ",
+        "fecha_nacimiento": "18-07-1979"
       },
       {
         "numero_paciente": "1050005",
-        "nombre": "No pertenece ya al protocolo"
+        "nombre": "No pertenece ya al protocolo",
+        "fecha_nacimiento": ""
       },
       {
         "numero_paciente": "1050006",
-        "nombre": "JACQUELINE BENITEZ"
+        "nombre": "JACQUELINE BENITEZ",
+        "fecha_nacimiento": "05-06-1991"
       }
     ]
   },
@@ -990,19 +1234,23 @@
     "pacientes": [
       {
         "numero_paciente": "167550165",
-        "nombre": "PATRICIA LILIANA FUNEZ"
+        "nombre": "PATRICIA LILIANA FUNEZ",
+        "fecha_nacimiento": "15-07-1974"
       },
       {
         "numero_paciente": "167550176",
-        "nombre": "NATALIA VERÓNICA CANTOS"
+        "nombre": "NATALIA VERÓNICA CANTOS",
+        "fecha_nacimiento": "12-09-1975"
       },
       {
         "numero_paciente": "167550187",
-        "nombre": "DANIELA MELINA BELLI MARÍN"
+        "nombre": "DANIELA MELINA BELLI MARÍN",
+        "fecha_nacimiento": "01-03-1997"
       },
       {
         "numero_paciente": "167550195",
-        "nombre": "YOLANDA AYDEE MONTAÑO"
+        "nombre": "YOLANDA AYDEE MONTAÑO",
+        "fecha_nacimiento": "21-05-1950"
       }
     ]
   },
@@ -1010,8 +1258,9 @@
     "protocolo": "REDEFINE",
     "pacientes": [
       {
-        "numero_paciente": "301801",
-        "nombre": "EUGENIA VILLALONGA"
+        "numero_paciente": "20020-00001-301801",
+        "nombre": "EUGENIA VILLALONGA",
+        "fecha_nacimiento": "14-01-1954"
       }
     ]
   },
@@ -1019,12 +1268,19 @@
     "protocolo": "SL0044",
     "pacientes": [
       {
-        "numero_paciente": "60011-01453",
-        "nombre": "JENNIFER CARDOZO"
+        "numero_paciente": "60011-01882",
+        "nombre": "CINTIA GUEVARA",
+        "fecha_nacimiento": "29-11-1986"
       },
       {
-        "numero_paciente": "60011-01882",
-        "nombre": "CINTIA GUEVARA"
+        "numero_paciente": "60011-01453",
+        "nombre": "JENNIFER CARDOZO",
+        "fecha_nacimiento": "16-10-1986"
+      },
+      {
+        "numero_paciente": "60011-01887",
+        "nombre": "ALEJANDRA GARI",
+        "fecha_nacimiento": "08-05-1981"
       }
     ]
   },
@@ -1032,24 +1288,34 @@
     "protocolo": "TAKEDA",
     "pacientes": [
       {
-        "numero_paciente": "GRACIELA",
-        "nombre": "ROMANO"
+        "numero_paciente": "01206-20001",
+        "nombre": "LODOVILLA LUCIA PARRA",
+        "fecha_nacimiento": "10-09-1948"
       },
       {
-        "numero_paciente": "01206-20001",
-        "nombre": "LODOVILLA LUCIA PARRA"
+        "numero_paciente": "",
+        "nombre": "GRACIELA ROMANO",
+        "fecha_nacimiento": "04-04-1973"
       },
       {
         "numero_paciente": "01206-20002",
-        "nombre": "MARIO DARÍO DUEÑAS"
+        "nombre": "MARIO DARÍO DUEÑAS",
+        "fecha_nacimiento": "08-06-1965"
       },
       {
         "numero_paciente": "01206-20003",
-        "nombre": "ROSA ROMERO"
+        "nombre": "ROSA ROMERO",
+        "fecha_nacimiento": "10-01-1957"
       },
       {
         "numero_paciente": "01206-20004",
-        "nombre": "NORMA ROSA PAEZ"
+        "nombre": "NORMA ROSA PAEZ",
+        "fecha_nacimiento": "09-04-1969"
+      },
+      {
+        "numero_paciente": "01206-20005",
+        "nombre": "JULIO QUIROZ",
+        "fecha_nacimiento": "07-10-1963"
       }
     ]
   },
@@ -1057,120 +1323,154 @@
     "protocolo": "VIKTORIA",
     "pacientes": [
       {
+        "numero_paciente": "VIKTORIA",
+        "nombre": "9004-1013 MARÍA DE LAS MERCEDES VARGAS",
+        "fecha_nacimiento": "02-07-1959"
+      },
+      {
         "numero_paciente": "9004-1001",
-        "nombre": "EMILIA NICOLASA ANDINO"
+        "nombre": "EMILIA NICOLASA ANDINO",
+        "fecha_nacimiento": "28-09-1959"
       },
       {
         "numero_paciente": "9004-1002",
-        "nombre": "CECILIA PANETTA"
+        "nombre": "CECILIA PANETTA",
+        "fecha_nacimiento": "21-05-1978"
       },
       {
         "numero_paciente": "9004-1003",
-        "nombre": "MARTA NOELIA RODRIGUEZ"
+        "nombre": "MARTA NOELIA RODRIGUEZ",
+        "fecha_nacimiento": "27-11-1985"
       },
       {
         "numero_paciente": "9004-1004",
-        "nombre": "NILDA BRÍGIDA ROBLEDO"
+        "nombre": "NILDA BRÍGIDA ROBLEDO",
+        "fecha_nacimiento": "05-02-1951"
       },
       {
         "numero_paciente": "9004-1005",
-        "nombre": "MORENO ANA"
+        "nombre": "MORENO ANA",
+        "fecha_nacimiento": ""
       },
       {
         "numero_paciente": "9004-1006",
-        "nombre": "ROSA MABEL MANRRIQUE"
+        "nombre": "ROSA MABEL MANRRIQUE",
+        "fecha_nacimiento": "23-01-1968"
       },
       {
         "numero_paciente": "9004-1007",
-        "nombre": "MARÍA BELÉN GOMEZ"
+        "nombre": "MARÍA BELÉN GOMEZ",
+        "fecha_nacimiento": "06-09-1984"
       },
       {
         "numero_paciente": "9004-1008",
-        "nombre": "LILIANA MARCELA VERA"
+        "nombre": "LILIANA MARCELA VERA (falla de screening)",
+        "fecha_nacimiento": ""
       },
       {
         "numero_paciente": "9004-1009",
-        "nombre": "AIDA GRACIELA MORALES"
+        "nombre": "AIDA GRACIELA MORALES",
+        "fecha_nacimiento": "16-12-1947"
       },
       {
         "numero_paciente": "9004-1010",
-        "nombre": "MANUELA FRANCISCA VILLEGAS"
+        "nombre": "MANUELA FRANCISCA VILLEGAS",
+        "fecha_nacimiento": "19-07-1947"
       },
       {
         "numero_paciente": "9004-1011",
-        "nombre": "ANITA GLADYS CHAVEZ"
+        "nombre": "ANITA GLADYS CHAVEZ",
+        "fecha_nacimiento": "25-07-1963"
       },
       {
         "numero_paciente": "9004-1012",
-        "nombre": "GEMA CARLOTA CARBAJAL GONZALEZ"
-      },
-      {
-        "numero_paciente": "9004-1013",
-        "nombre": "MARÍA DE LAS MERCEDES VARGAS"
+        "nombre": "GEMA CARLOTA CARBAJAL GONZALEZ",
+        "fecha_nacimiento": "26-02-1976"
       },
       {
         "numero_paciente": "9004-1014",
-        "nombre": "MIRTHA DELIA PAEZ"
+        "nombre": "MIRTHA DELIA PAEZ",
+        "fecha_nacimiento": "07-04-192"
       },
       {
         "numero_paciente": "9004-1015",
-        "nombre": "YOLANDA MARIELA CABRAL"
+        "nombre": "YOLANDA MARIELA CABRAL",
+        "fecha_nacimiento": "16-06-1967"
       },
       {
         "numero_paciente": "9004-1016",
-        "nombre": "DORA CRISTINA DEL ROSARIO FIGUEROA"
+        "nombre": "DORA CRISTINA DEL ROSARIO FIGUEROA",
+        "fecha_nacimiento": "23-05-1953"
       },
       {
         "numero_paciente": "9004-1017",
-        "nombre": "LUCÍA NELIDA MANRRIQUE"
+        "nombre": "LUCÍA NELIDA MANRRIQUE",
+        "fecha_nacimiento": "21-08-1963"
       },
       {
         "numero_paciente": "9004-1018",
-        "nombre": "FLAVIA ELSA ROCA"
+        "nombre": "FLAVIA ELSA ROCA",
+        "fecha_nacimiento": "07-01-1981"
       },
       {
         "numero_paciente": "9004-1019",
-        "nombre": "EUGENIA GRACIELA CARRASCOSA"
+        "nombre": "EUGENIA GRACIELA CARRASCOSA",
+        "fecha_nacimiento": "11-12-1947"
       },
       {
         "numero_paciente": "9004-1020",
-        "nombre": "ROSA MARÍA GONZALEZ"
+        "nombre": "ROSA MARÍA GONZALEZ",
+        "fecha_nacimiento": "23-11-1956"
       },
       {
         "numero_paciente": "9004-1021",
-        "nombre": "GRACIELA MARÍA ELCIRA ORO"
+        "nombre": "GRACIELA MARÍA ELCIRA ORO",
+        "fecha_nacimiento": "01-11-1973"
       },
       {
         "numero_paciente": "9004-1022",
-        "nombre": "VIVIANA ISABEL MONTIVERO"
+        "nombre": "VIVIANA ISABEL MONTIVERO",
+        "fecha_nacimiento": "27-06-1965"
       },
       {
         "numero_paciente": "9004-1023",
-        "nombre": "SOFÍA ALDEOLINA PEREZ"
+        "nombre": "SOFÍA ALDEOLINA PEREZ",
+        "fecha_nacimiento": "03-11-1949"
       },
       {
         "numero_paciente": "9004-1024",
-        "nombre": "MIRTHA MATILDE ABALLAY"
+        "nombre": "MIRTHA MATILDE ABALLAY",
+        "fecha_nacimiento": "14-03-195"
+      },
+      {
+        "numero_paciente": "9004-1025",
+        "nombre": "LILIANA GOMEZ",
+        "fecha_nacimiento": "13-04-1962"
       },
       {
         "numero_paciente": "9004-1026",
-        "nombre": "MARÍA ALEJANDRA GALEOTE"
+        "nombre": "MARÍA ALEJANDRA GALEOTE",
+        "fecha_nacimiento": "20-11-1964"
       },
       {
         "numero_paciente": "9004-1028",
-        "nombre": "PAOLA VIVIANA VALDEARENAS"
+        "nombre": "PAOLA VIVIANA VALDEARENAS",
+        "fecha_nacimiento": "12-05-1983"
       },
       {
         "numero_paciente": "9004-1029",
-        "nombre": "DELIA SUSANA GARRO"
+        "nombre": "DELIA SUSANA GARRO",
+        "fecha_nacimiento": "14-12-1949"
       },
       {
         "numero_paciente": "9004-1030",
-        "nombre": "SANDRA ELIZABETH GARCÍA"
+        "nombre": "SANDRA ELIZABETH GARCÍA",
+        "fecha_nacimiento": "11-09-1971"
       },
       {
         "numero_paciente": "9004-1031",
-        "nombre": "NORMA BEATRIZ TEJADA"
+        "nombre": "NORMA BEATRIZ TEJADA",
+        "fecha_nacimiento": "31-01-1964"
       }
     ]
   },
@@ -1179,23 +1479,28 @@
     "pacientes": [
       {
         "numero_paciente": "30238",
-        "nombre": "MARISA CORNEJO"
+        "nombre": "MARISA CORNEJO",
+        "fecha_nacimiento": "05-06-1988"
       },
       {
         "numero_paciente": "30886",
-        "nombre": "Aldana Nuñez"
+        "nombre": "Aldana Nuñez (falla de screening)",
+        "fecha_nacimiento": "15-04-1996"
       },
       {
-        "numero_paciente": "30991",
-        "nombre": "AZUCENA LIDIA BRIZUELA"
+        "numero_paciente": "WO44263",
+        "nombre": "30991 AZUCENA LIDIA BRIZUELA (falla de screening)",
+        "fecha_nacimiento": "25-02-1959"
       },
       {
         "numero_paciente": "301443",
-        "nombre": "MARIA EUGENIA AG"
+        "nombre": "MARIA EUGENIA AGÜERO (FALLA DE SCREENING)",
+        "fecha_nacimiento": "25-01-1970"
       },
       {
         "numero_paciente": "301514",
-        "nombre": "ELBA BEATRIZ SANCHEZ"
+        "nombre": "ELBA BEATRIZ SANCHEZ (falla de screening)",
+        "fecha_nacimiento": "23-02-1972"
       }
     ]
   }

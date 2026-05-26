@@ -37,6 +37,8 @@ const extraObservationForm = document.getElementById('extraObservationForm');
 const resetObservationFormButton = document.getElementById('resetObservationForm');
 const extraObservationDateInput = document.getElementById('extraObservationDate');
 const extraObservationText = document.getElementById('extraObservationText');
+const observationTableSection = document.getElementById('observationTableSection');
+const observationsTableBody = document.querySelector('#observationsTable tbody');
 
 // ============= STATE =============
 let protocolosData = [];
@@ -89,6 +91,7 @@ function setupObservationsListener() {
   observationsRef.on('value', (snapshot) => {
     const data = snapshot.val();
     observationsData = data || {};
+    renderTables();
   });
 }
 
@@ -231,6 +234,14 @@ function buildOrderRow(order) {
   return tr;
 }
 
+function buildObservationRow(observation) {
+  const tr = document.createElement('tr');
+  tr.innerHTML = `
+    <td>${formatDateFromString(observation.observationDate)}</td>
+    <td>${observation.observationText}</td>
+  `;
+  return tr;
+}
 
 function renderTables() {
   const selectedDate = getSelectedDate();
@@ -287,6 +298,19 @@ function renderTables() {
     ordersTableBody.innerHTML = `<tr><td colspan="6">No hay pedidos programados para esta fecha.</td></tr>`;
   } else {
     ordersForDate.forEach(order => ordersTableBody.appendChild(buildOrderRow(order)));
+  }
+
+  const observationsArray = Object.keys(observationsData).map(id => ({ id, ...observationsData[id] }));
+  const observationsForDate = observationsArray
+    .filter(item => item.observationDate === selectedDate)
+    .sort((a, b) => a.createdAt.localeCompare(b.createdAt));
+
+  observationsTableBody.innerHTML = '';
+  if (observationsForDate.length === 0) {
+    observationTableSection.classList.add('hidden');
+  } else {
+    observationTableSection.classList.remove('hidden');
+    observationsForDate.forEach(observation => observationsTableBody.appendChild(buildObservationRow(observation)));
   }
 }
 

@@ -144,7 +144,8 @@ main {
   animation: slideDown 0.3s ease;
 }
 
-.collapsible-content.hidden {
+.collapsible-content.hidden,
+.panel.hidden {
   display: none;
 }
 

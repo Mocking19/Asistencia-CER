@@ -22,14 +22,15 @@
         <table id="appointmentsTable">
           <thead>
             <tr>
-              <th>Hora*</th>
-              <th>Protocolo</th>
               <th>Visita</th>
-              <th>Doctor</th>
-              <th>Nombre</th>
+              <th>Protocolo</th>
               <th>Número</th>
+              <th>Nombre</th>
               <th>Teléfono</th>
+              <th>Doctor</th>
+              <th>Fecha de cita</th>
               <th>Observaciones</th>
+              <th>Hora*</th>
               <th>Estado</th>
               <th>Acciones</th>
             </tr>
@@ -66,17 +67,17 @@
                 <option value="">Selecciona un protocolo</option>
               </select>
             </label>
-            <label>Visita<input type="text" id="visit" required /></label>
-            <label>Doctor<input type="text" id="doctor" required /></label>
-            <label>Nombre del paciente<input type="text" id="name" readonly required /></label>
             <label>Número de paciente
               <select id="patientNumber" required>
                 <option value="">Selecciona un protocolo primero</option>
               </select>
             </label>
+            <label>Nombre del paciente<input type="text" id="name" readonly required /></label>
             <label>Teléfono<input type="tel" id="phone" /></label>
-            <label>Observaciones<textarea id="notes"></textarea></label>
+            <label>Doctor<input type="text" id="doctor" required /></label>
             <label>Fecha de cita<input type="date" id="appointmentDate" required /></label>
+            <label>Observaciones<textarea id="notes"></textarea></label>
+            <label>Visita<input type="text" id="visit" required /></label>
           </div>
           <div class="actions">
             <button type="submit">Agregar a lista</button>

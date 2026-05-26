@@ -62,6 +62,7 @@
       <div class="collapsible-content" id="formContent">
         <form id="appointmentForm">
           <div class="form-grid">
+            <label>Visita<input type="text" id="visit" required /></label>
             <label>Protocolo
               <select id="protocol" required>
                 <option value="">Selecciona un protocolo</option>
@@ -77,7 +78,6 @@
             <label>Doctor<input type="text" id="doctor" required /></label>
             <label>Fecha de cita<input type="date" id="appointmentDate" required /></label>
             <label>Observaciones<textarea id="notes"></textarea></label>
-            <label>Visita<input type="text" id="visit" required /></label>
           </div>
           <div class="actions">
             <button type="submit">Agregar a lista</button>

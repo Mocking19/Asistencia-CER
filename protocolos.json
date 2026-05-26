@@ -615,7 +615,7 @@
       {
         "numero_paciente": "201030/60768",
         "nombre": "ERICA VARGAS",
-        "fecha_nacimiento": ""
+        "fecha_nacimiento": "00-00-00"
       },
       {
         "numero_paciente": "201188/60868",
@@ -1100,7 +1100,7 @@
       {
         "numero_paciente": "10954",
         "nombre": "JUAN TOMÁS DIAZ 10-100-1939",
-        "fecha_nacimiento": ""
+        "fecha_nacimiento": "00-00-0000"
       }
     ]
   },

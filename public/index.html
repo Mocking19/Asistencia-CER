@@ -15,8 +15,14 @@
   <main>
     <section class="panel">
       <div class="section-header">
-        <h2>Asistencia y Pacientes del día</h2>
-        <p id="stats"></p>
+        <div>
+          <h2>Asistencia y Pacientes del día</h2>
+          <p id="stats"></p>
+        </div>
+        <div class="controls-inline">
+          <input type="date" id="viewDate" />
+          <button class="tiny-btn primary" id="downloadPdf">PDF</button>
+        </div>
       </div>
       <div class="table-wrap">
         <table id="appointmentsTable">
@@ -41,16 +47,24 @@
       <p style="font-size: 0.85rem; color: #5c6879; margin-top: 12px;">* Hora de llegada del paciente</p>
     </section>
 
-    <section class="panel compact">
-      <div class="collapsible-header" id="toggleControls">
-        <h2>Controles</h2>
-        <span class="toggle-icon">▼</span>
+ <section class="panel">
+      <div class="section-header">
+        <h2>Pedidos programados del día</h2>
       </div>
-      <div class="collapsible-content" id="controlsContent">
-        <div class="date-row">
-          <label>Ver fecha:<input type="date" id="viewDate" /></label>
-          <button id="downloadPdf">Descargar asistencia PDF</button>
-        </div>
+      <div class="table-wrap">
+        <table id="ordersTable">
+          <thead>
+            <tr>
+              <th>Tipo de pedido</th>
+              <th>Horario</th>
+              <th>Fecha</th>
+              <th>Protocolo</th>
+              <th>Número</th>
+              <th>Nombre</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
       </div>
     </section>
 
@@ -82,6 +96,56 @@
           <div class="actions">
             <button type="submit">Agregar a lista</button>
             <button type="button" id="resetForm">Limpiar formulario</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="collapsible-header" id="toggleOrderForm">
+        <h2>Programar pedido</h2>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="collapsible-content" id="orderFormContent">
+        <form id="orderForm">
+          <div class="form-grid">
+            <label>Tipo de pedido<input type="text" id="orderType" required /></label>
+            <label>Horario<input type="time" id="orderTime" required /></label>
+            <label>Fecha<input type="date" id="orderDate" required /></label>
+            <label>Protocolo
+              <select id="orderProtocol" required>
+                <option value="">Selecciona un protocolo</option>
+              </select>
+            </label>
+            <label>Número de paciente
+              <select id="orderPatientNumber" required>
+                <option value="">Selecciona un protocolo primero</option>
+              </select>
+            </label>
+            <label>Nombre del paciente<input type="text" id="orderName" readonly required /></label>
+          </div>
+          <div class="actions">
+            <button type="submit">Programar pedido</button>
+            <button type="button" id="resetOrderForm">Limpiar formulario</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="collapsible-header" id="toggleObservationForm">
+        <h2>Observación extraordinaria</h2>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="collapsible-content" id="observationFormContent">
+        <form id="extraObservationForm">
+          <div class="form-grid">
+            <label>Fecha de observación<input type="date" id="extraObservationDate" required /></label>
+            <label>Observación<textarea id="extraObservationText" required placeholder="Escribe la observación extraordinaria aquí..."></textarea></label>
+          </div>
+          <div class="actions">
+            <button type="submit">Guardar observación</button>
+            <button type="button" id="resetObservationForm">Limpiar formulario</button>
           </div>
         </form>
       </div>

@@ -16,18 +16,36 @@ const appointmentsRef = database.ref('appointments');
 
 // ============= DOM ELEMENTS =============
 const appointmentForm = document.getElementById('appointmentForm');
+const orderForm = document.getElementById('orderForm');
 const appointmentsTableBody = document.querySelector('#appointmentsTable tbody');
+const ordersTableBody = document.querySelector('#ordersTable tbody');
 const viewDateInput = document.getElementById('viewDate');
 const downloadPdfButton = document.getElementById('downloadPdf');
 const stats = document.getElementById('stats');
 const resetFormButton = document.getElementById('resetForm');
+const resetOrderFormButton = document.getElementById('resetOrderForm');
 const protocolSelect = document.getElementById('protocol');
+const orderProtocolSelect = document.getElementById('orderProtocol');
 const patientNumberSelect = document.getElementById('patientNumber');
+const orderPatientNumberSelect = document.getElementById('orderPatientNumber');
 const nameInput = document.getElementById('name');
+const orderNameInput = document.getElementById('orderName');
+const orderTypeInput = document.getElementById('orderType');
+const orderTimeInput = document.getElementById('orderTime');
+const orderDateInput = document.getElementById('orderDate');
+const extraObservationForm = document.getElementById('extraObservationForm');
+const resetObservationFormButton = document.getElementById('resetObservationForm');
+const extraObservationDateInput = document.getElementById('extraObservationDate');
+const extraObservationText = document.getElementById('extraObservationText');
 
 // ============= STATE =============
 let protocolosData = [];
 let appointmentsData = {};  // Object with { id: appointment }
+let ordersData = {};       // Object with { id: order }
+let observationsData = {}; // Object with { id: observation }
+
+const ordersRef = database.ref('orders');
+const observationsRef = database.ref('observations');
 
 // ============= FIREBASE LISTENERS =============
 function setupAppointmentsListener() {
@@ -38,9 +56,21 @@ function setupAppointmentsListener() {
   });
 }
 
+function setupOrdersListener() {
+  ordersRef.on('value', (snapshot) => {
+    const data = snapshot.val();
+    ordersData = data || {};
+    renderTables();
+  });
+}
+
 // ============= FIREBASE OPERATIONS =============
 function addAppointmentToFirebase(appointmentObj) {
   return appointmentsRef.push(appointmentObj);
+}
+
+function addOrderToFirebase(orderObj) {
+  return ordersRef.push(orderObj);
 }
 
 function updateAppointmentInFirebase(id, updates) {
@@ -49,6 +79,17 @@ function updateAppointmentInFirebase(id, updates) {
 
 function deleteAppointmentFromFirebase(id) {
   return appointmentsRef.child(id).remove();
+}
+
+function addObservationToFirebase(observationObj) {
+  return observationsRef.push(observationObj);
+}
+
+function setupObservationsListener() {
+  observationsRef.on('value', (snapshot) => {
+    const data = snapshot.val();
+    observationsData = data || {};
+  });
 }
 
 async function fetchProtocolos() {
@@ -66,15 +107,18 @@ function populateProtocolSelect(protocolos) {
     .join('');
 
   protocolSelect.innerHTML = `<option value="">Selecciona un protocolo</option>${options}`;
+  orderProtocolSelect.innerHTML = `<option value="">Selecciona un protocolo</option>${options}`;
   patientNumberSelect.innerHTML = '<option value="">Selecciona un protocolo primero</option>';
+  orderPatientNumberSelect.innerHTML = '<option value="">Selecciona un protocolo primero</option>';
   nameInput.value = '';
+  orderNameInput.value = '';
 }
 
-function populatePatientNumbers(protocolo) {
+function populatePatientNumbers(protocolo, targetNumberSelect = patientNumberSelect, targetNameInput = nameInput) {
   const selected = protocolosData.find(item => item.protocolo === protocolo);
   if (!selected) {
-    patientNumberSelect.innerHTML = '<option value="">Selecciona un protocolo primero</option>';
-    nameInput.value = '';
+    targetNumberSelect.innerHTML = '<option value="">Selecciona un protocolo primero</option>';
+    targetNameInput.value = '';
     return;
   }
 
@@ -85,17 +129,17 @@ function populatePatientNumbers(protocolo) {
       </option>`)
     .join('');
 
-  patientNumberSelect.innerHTML = `
+  targetNumberSelect.innerHTML = `
     <option value="">Selecciona número de paciente</option>
     ${patientsOptions}
   `;
-  nameInput.value = '';
+  targetNameInput.value = '';
 }
 
-function updateNameFromPatient() {
-  const selectedOption = patientNumberSelect.selectedOptions[0];
+function updateNameFromPatient(selectElement = patientNumberSelect, targetNameInput = nameInput) {
+  const selectedOption = selectElement.selectedOptions[0];
   const patientName = selectedOption?.dataset?.name || '';
-  nameInput.value = patientName;
+  targetNameInput.value = patientName;
 }
 
 function formatDate(dateString) {
@@ -174,6 +218,19 @@ function buildAppointmentRow(appointment) {
   return tr;
 }
 
+function buildOrderRow(order) {
+  const tr = document.createElement('tr');
+  tr.innerHTML = `
+    <td>${order.orderType}</td>
+    <td>${order.orderTime}</td>
+    <td>${formatDateFromString(order.orderDate)}</td>
+    <td>${order.protocol}</td>
+    <td>${order.patientNumber}</td>
+    <td>${order.name}</td>
+  `;
+  return tr;
+}
+
 
 function renderTables() {
   const selectedDate = getSelectedDate();
@@ -185,6 +242,9 @@ function renderTables() {
   }));
 
   const appointmentsForDate = appointmentsArray.filter(item => item.appointmentDate === selectedDate);
+  const ordersArray = Object.keys(ordersData).map(id => ({ id, ...ordersData[id] }));
+  const ordersForDate = ordersArray.filter(item => item.orderDate === selectedDate)
+    .sort((a, b) => a.orderTime.localeCompare(b.orderTime, 'es', { sensitivity: 'base' }));
   
   // Ordenar: primero por doctor, luego llegados (con hora), luego pendientes, luego ausentes
   const sortedAppointments = [...appointmentsForDate].sort((a, b) => {
@@ -212,7 +272,7 @@ function renderTables() {
   appointmentsTableBody.innerHTML = '';
 
   if (sortedAppointments.length === 0) {
-    appointmentsTableBody.innerHTML = `<tr><td colspan="10">No hay pacientes programados para esta fecha.</td></tr>`;
+    appointmentsTableBody.innerHTML = `<tr><td colspan="11">No hay pacientes programados para esta fecha.</td></tr>`;
   } else {
     sortedAppointments.forEach(appointment => appointmentsTableBody.appendChild(buildAppointmentRow(appointment)));
   }
@@ -221,6 +281,13 @@ function renderTables() {
   const pendingCount = appointmentsForDate.filter(item => !item.arrivalTime && !item.absent).length;
   const absentCount = appointmentsForDate.filter(item => item.absent).length;
   stats.textContent = `Fecha: ${formatDateFromString(selectedDate)} | Total: ${appointmentsForDate.length} | Llegaron: ${arrivedCount} | Pendientes: ${pendingCount} | No asistieron: ${absentCount}`;
+
+  ordersTableBody.innerHTML = '';
+  if (ordersForDate.length === 0) {
+    ordersTableBody.innerHTML = `<tr><td colspan="6">No hay pedidos programados para esta fecha.</td></tr>`;
+  } else {
+    ordersForDate.forEach(order => ordersTableBody.appendChild(buildOrderRow(order)));
+  }
 }
 
 function addAppointment(event) {
@@ -260,10 +327,77 @@ function addAppointment(event) {
     .catch(error => console.error('Error al agregar cita:', error));
 }
 
+function addOrder(event) {
+  event.preventDefault();
+  const orderType = orderTypeInput.value.trim();
+  const orderTime = orderTimeInput.value.trim();
+  const orderDate = orderDateInput.value;
+  const protocol = orderProtocolSelect.value.trim();
+  const patientNumber = orderPatientNumberSelect.value.trim();
+  const name = orderNameInput.value.trim();
+
+  if (!orderType || !orderTime || !orderDate || !protocol || !patientNumber || !name) {
+    return;
+  }
+
+  const orderObj = {
+    orderType,
+    orderTime,
+    orderDate,
+    protocol,
+    patientNumber,
+    name,
+    createdAt: new Date().toISOString()
+  };
+
+  addOrderToFirebase(orderObj)
+    .then(() => {
+      orderForm.reset();
+      setDefaultDates();
+    })
+    .catch(error => console.error('Error al programar pedido:', error));
+}
+
+function addObservation(event) {
+  event.preventDefault();
+  const observationDate = extraObservationDateInput.value;
+  const observationText = extraObservationText.value.trim();
+
+  if (!observationDate || !observationText) {
+    return;
+  }
+
+  const observationObj = {
+    observationDate,
+    observationText,
+    createdAt: new Date().toISOString()
+  };
+
+  addObservationToFirebase(observationObj)
+    .then(() => {
+      extraObservationForm.reset();
+      setDefaultDates();
+      setDefaultObservationDate();
+    })
+    .catch(error => console.error('Error al guardar observación:', error));
+}
+
 function setDefaultDates() {
   const tomorrow = new Date();
   tomorrow.setDate(tomorrow.getDate() + 1);
   document.getElementById('appointmentDate').value = getLocalDateString(tomorrow);
+  orderDateInput.value = getLocalDateString(tomorrow);
+}
+
+function setDefaultObservationDate() {
+  extraObservationDateInput.value = getLocalDateString(new Date());
+}
+
+function changeSelectedDate(days) {
+  const currentDate = new Date(viewDateInput.value || getLocalDateString(new Date()));
+  currentDate.setDate(currentDate.getDate() + days);
+  viewDateInput.value = getLocalDateString(currentDate);
+  renderTables();
 }
 
 function markArrival(button) {
@@ -407,17 +541,100 @@ function downloadPdf() {
     });
   }
 
+  const ordersForDate = Object.keys(ordersData).map(id => ({ id, ...ordersData[id] }))
+    .filter(item => item.orderDate === selectedDate)
+    .sort((a, b) => a.orderTime.localeCompare(b.orderTime, 'es', { sensitivity: 'base' }));
+
+  if (ordersForDate.length > 0) {
+    if (currentY > 720) {
+      doc.addPage();
+      currentY = 40;
+    }
+
+    currentY += rowHeight;
+    doc.setFontSize(12);
+    doc.text('Pedidos programados', marginLeft, currentY);
+    currentY += rowHeight;
+
+    const orderHeaders = ['Tipo de pedido', 'Horario', 'Fecha', 'Protocolo', 'N°', 'Paciente'];
+    doc.setFontSize(9);
+    doc.text(orderHeaders.join(' | '), marginLeft, currentY);
+    currentY += rowHeight;
+
+    ordersForDate.forEach(item => {
+      if (currentY > 720) {
+        doc.addPage();
+        currentY = 40;
+      }
+      const row = [
+        item.orderType,
+        item.orderTime,
+        formatDateFromString(item.orderDate),
+        item.protocol,
+        item.patientNumber,
+        item.name
+      ];
+      const text = row.join(' | ');
+      const splitText = doc.splitTextToSize(text, 520);
+      splitText.forEach((line, index) => {
+        doc.text(line, marginLeft, currentY + index * rowHeight);
+      });
+      currentY += rowHeight * splitText.length;
+    });
+  }
+
+  const observationsForDate = Object.keys(observationsData).map(id => ({ id, ...observationsData[id] }))
+    .filter(item => item.observationDate === selectedDate)
+    .sort((a, b) => a.createdAt.localeCompare(b.createdAt));
+
+  if (observationsForDate.length > 0) {
+    if (currentY > 720) {
+      doc.addPage();
+      currentY = 40;
+    }
+
+    currentY += rowHeight;
+    doc.setFontSize(12);
+    doc.text('Observaciones extraordinarias', marginLeft, currentY);
+    currentY += rowHeight;
+    doc.setFontSize(9);
+
+    observationsForDate.forEach(item => {
+      if (currentY > 720) {
+        doc.addPage();
+        currentY = 40;
+      }
+      const splitText = doc.splitTextToSize(`- ${item.observationText}`, 520);
+      splitText.forEach((line, index) => {
+        doc.text(line, marginLeft, currentY + index * rowHeight);
+      });
+      currentY += rowHeight * splitText.length;
+    });
+  }
+
   doc.save(`asistencia-${selectedDate}.pdf`);
 }
 
 function bindEvents() {
   appointmentForm.addEventListener('submit', addAppointment);
+  orderForm.addEventListener('submit', addOrder);
   resetFormButton.addEventListener('click', () => {
     appointmentForm.reset();
     setDefaultDates();
   });
+  resetOrderFormButton.addEventListener('click', () => {
+    orderForm.reset();
+    setDefaultDates();
+  });
   protocolSelect.addEventListener('change', () => populatePatientNumbers(protocolSelect.value));
-  patientNumberSelect.addEventListener('change', updateNameFromPatient);
+  orderProtocolSelect.addEventListener('change', () => populatePatientNumbers(orderProtocolSelect.value, orderPatientNumberSelect, orderNameInput));
+  patientNumberSelect.addEventListener('change', () => updateNameFromPatient(patientNumberSelect, nameInput));
+  orderPatientNumberSelect.addEventListener('change', () => updateNameFromPatient(orderPatientNumberSelect, orderNameInput));
+  extraObservationForm.addEventListener('submit', addObservation);
+  resetObservationFormButton.addEventListener('click', () => {
+    extraObservationForm.reset();
+    setDefaultObservationDate();
+  });
   viewDateInput.addEventListener('change', renderTables);
   downloadPdfButton.addEventListener('click', downloadPdf);
 
@@ -425,15 +642,19 @@ function bindEvents() {
   document.getElementById('toggleForm').addEventListener('click', () => {
     toggleCollapsible('form');
   });
-  document.getElementById('toggleControls').addEventListener('click', () => {
-    toggleCollapsible('controls');
+  document.getElementById('toggleOrderForm').addEventListener('click', () => {
+    toggleCollapsible('order');
+  });
+  document.getElementById('toggleObservationForm').addEventListener('click', () => {
+    toggleCollapsible('observation');
   });
 }
 
 function toggleCollapsible(section) {
   const mapping = {
     'form': { header: 'toggleForm', content: 'formContent' },
-    'controls': { header: 'toggleControls', content: 'controlsContent' }
+    'order': { header: 'toggleOrderForm', content: 'orderFormContent' },
+    'observation': { header: 'toggleObservationForm', content: 'observationFormContent' }
   };
 
   const { header, content } = mapping[section];
@@ -445,9 +666,7 @@ function toggleCollapsible(section) {
 }
 
 async function initialize() {
-  const tomorrow = new Date();
-  tomorrow.setDate(tomorrow.getDate() + 1);
-  document.getElementById('appointmentDate').value = getLocalDateString(tomorrow);
+  setDefaultDates();
   viewDateInput.value = getLocalDateString(new Date());
 
   bindEvents();
@@ -461,10 +680,16 @@ async function initialize() {
 
   // Setup Firebase listener for real-time updates
   setupAppointmentsListener();
+  setupOrdersListener();
+  setupObservationsListener();
   
-  // Inicialmente, colapsamos formulario
+  // Inicialmente, colapsamos formularios
   document.getElementById('toggleForm').classList.add('collapsed');
   document.getElementById('formContent').classList.add('hidden');
+  document.getElementById('toggleOrderForm').classList.add('collapsed');
+  document.getElementById('orderFormContent').classList.add('hidden');
+  document.getElementById('toggleObservationForm').classList.add('collapsed');
+  document.getElementById('observationFormContent').classList.add('hidden');
 }
 
 initialize();

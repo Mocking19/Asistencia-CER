@@ -131,14 +131,15 @@ function buildAppointmentRow(appointment) {
 
   tr.className = isAbsent ? 'no-attendance' : '';
   tr.innerHTML = `
-    <td>${arrivalHourHtml}</td>
-    <td>${appointment.protocol}</td>
     <td>${appointment.visit || '-'}</td>
-    <td>${appointment.doctor}</td>
-    <td>${appointment.name}</td>
+    <td>${appointment.protocol}</td>
     <td>${appointment.patientNumber}</td>
+    <td>${appointment.name}</td>
     <td>${appointment.phone || '-'}</td>
+    <td>${appointment.doctor}</td>
+    <td>${formatDateFromString(appointment.appointmentDate)}</td>
     <td>${appointment.notes || '-'}</td>
+    <td>${arrivalHourHtml}</td>
     <td>${statusHtml}</td>
     <td>${actionsHtml}</td>
   `;
@@ -287,6 +288,13 @@ function downloadPdf() {
       if (byDoctor !== 0) return byDoctor;
       return new Date(a.arrivalTime) - new Date(b.arrivalTime);
     });
+  const absentForDate = data.appointments
+    .filter(item => item.absent && item.appointmentDate === selectedDate)
+    .sort((a, b) => {
+      const byDoctor = a.doctor.localeCompare(b.doctor, 'es', { sensitivity: 'base' });
+      if (byDoctor !== 0) return byDoctor;
+      return a.patientNumber.localeCompare(b.patientNumber, 'es', { sensitivity: 'base' });
+    });
 
   doc.setFontSize(14);
   doc.text('Planilla de Asistencia', 40, 40);
@@ -295,27 +303,28 @@ function downloadPdf() {
 
   const marginLeft = 40;
   let currentY = 90;
-
-  const headers = ['Hora', 'Doctor', 'Protocolo', 'Visita', 'Paciente', 'N°', 'Teléfono', 'Observaciones'];
   const rowHeight = 18;
 
+  const headers = ['Visita', 'Protocolo', 'N°', 'Paciente', 'Teléfono', 'Doctor', 'Fecha cita', 'Observaciones', 'Hora'];
   doc.setFontSize(9);
   doc.text(headers.join(' | '), marginLeft, currentY);
   currentY += rowHeight;
 
   if (attendanceForDate.length === 0) {
     doc.text('No hay pacientes registrados con llegada para esta fecha.', marginLeft, currentY);
+    currentY += rowHeight;
   } else {
     attendanceForDate.forEach(item => {
       const row = [
-        formatTime(item.arrivalTime),
-        item.doctor,
-        item.protocol,
         item.visit || '-',
-        item.name,
+        item.protocol,
         item.patientNumber,
+        item.name,
         item.phone || '-',
-        item.notes || '-'
+        item.doctor,
+        formatDateFromString(item.appointmentDate),
+        item.notes || '-',
+        formatTime(item.arrivalTime)
       ];
       const text = row.join(' | ');
       const splitText = doc.splitTextToSize(text, 520);
@@ -327,6 +336,46 @@ function downloadPdf() {
         doc.addPage();
         currentY = 40;
       }
+    });
+  }
+
+  if (absentForDate.length > 0) {
+    if (currentY > 720) {
+      doc.addPage();
+      currentY = 40;
+    }
+
+    currentY += rowHeight;
+    doc.setFontSize(12);
+    doc.text('Pacientes que no asistieron', marginLeft, currentY);
+    currentY += rowHeight;
+
+    const absentHeaders = ['Visita', 'Protocolo', 'N°', 'Paciente', 'Teléfono', 'Doctor', 'Fecha cita', 'Razón'];
+    doc.setFontSize(9);
+    doc.text(absentHeaders.join(' | '), marginLeft, currentY);
+    currentY += rowHeight;
+
+    absentForDate.forEach(item => {
+      if (currentY > 720) {
+        doc.addPage();
+        currentY = 40;
+      }
+      const row = [
+        item.visit || '-',
+        item.protocol,
+        item.patientNumber,
+        item.name,
+        item.phone || '-',
+        item.doctor,
+        formatDateFromString(item.appointmentDate),
+        item.absenceReason || '-'
+      ];
+      const text = row.join(' | ');
+      const splitText = doc.splitTextToSize(text, 520);
+      splitText.forEach((line, index) => {
+        doc.text(line, marginLeft, currentY + index * rowHeight);
+      });
+      currentY += rowHeight * splitText.length;
     });
   }
 

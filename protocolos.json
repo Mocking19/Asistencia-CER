@@ -420,7 +420,7 @@
       {
         "numero_paciente": "17055001",
         "nombre": "RAMONA VEGA 10808129",
-        "fecha_nacimiento": ""
+        "fecha_nacimiento": "00-00-0000"
       },
       {
         "numero_paciente": "17055002",
@@ -500,7 +500,7 @@
       {
         "numero_paciente": "54050002",
         "nombre": "Falla de screening",
-        "fecha_nacimiento": ""
+        "fecha_nacimiento": "00-00-0000"
       },
       {
         "numero_paciente": "54050004",
@@ -754,8 +754,8 @@
     "pacientes": [
       {
         "numero_paciente": "AR 1391-1001",
-        "nombre": "",
-        "fecha_nacimiento": ""
+        "nombre": "NULL",
+        "fecha_nacimiento": "00-00-0000"
       },
       {
         "numero_paciente": "AR 1391-1002",
@@ -1220,7 +1220,7 @@
       {
         "numero_paciente": "1050005",
         "nombre": "No pertenece ya al protocolo",
-        "fecha_nacimiento": ""
+        "fecha_nacimiento": "00-00-0000"
       },
       {
         "numero_paciente": "1050006",
@@ -1293,7 +1293,7 @@
         "fecha_nacimiento": "10-09-1948"
       },
       {
-        "numero_paciente": "",
+        "numero_paciente": "01206-20006",
         "nombre": "GRACIELA ROMANO",
         "fecha_nacimiento": "04-04-1973"
       },
@@ -1350,7 +1350,7 @@
       {
         "numero_paciente": "9004-1005",
         "nombre": "MORENO ANA",
-        "fecha_nacimiento": ""
+        "fecha_nacimiento": "00-00-0000"
       },
       {
         "numero_paciente": "9004-1006",
@@ -1365,7 +1365,7 @@
       {
         "numero_paciente": "9004-1008",
         "nombre": "LILIANA MARCELA VERA (falla de screening)",
-        "fecha_nacimiento": ""
+        "fecha_nacimiento": "00-00-0000"
       },
       {
         "numero_paciente": "9004-1009",

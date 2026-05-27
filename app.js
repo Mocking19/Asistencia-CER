@@ -133,8 +133,8 @@ function buildAppointmentRow(appointment) {
   let actionsHtml = '';
   if (!hasArrived && !isAbsent) {
     actionsHtml = `
-      <button class="btn-small" data-id="${appointment.id}" onclick="markNoAttendance(this)">No asistió</button>
-      <button class="btn-small danger" data-id="${appointment.id}" onclick="deleteAppointment(this)">Eliminar</button>
+      <button class="btn-icon edit" data-id="${appointment.id}" title="Editar visita" onclick="editAppointment(this)">✎</button>
+      <button class="btn-icon delete" data-id="${appointment.id}" title="Eliminar" onclick="deleteAppointment(this)">✕</button>
     `;
   }
 
@@ -210,27 +210,56 @@ function addAppointment(event) {
   const notes = document.getElementById('notes').value.trim();
   const appointmentDate = document.getElementById('appointmentDate').value;
 
-  if (!protocol || !visit || !doctor || !name || !patientNumber || !birthDate || !appointmentDate) {
+  if (!protocol || !visit || !doctor || !name || !patientNumber || !appointmentDate) {
     return;
   }
 
   const data = loadData();
-  data.appointments.push({
-    id: createId(),
-    protocol,
-    visit,
-    doctor,
-    name,
-    patientNumber,
-    birthDate,
-    notes,
-    appointmentDate,
-    arrivalTime: null,
-    absent: false,
-    absenceReason: ''
-  });
+  const editId = appointmentForm.dataset.editId;
+  
+  if (editId) {
+    // Actualizar cita existente
+    const appointmentIndex = data.appointments.findIndex(item => item.id === editId);
+    if (appointmentIndex !== -1) {
+      data.appointments[appointmentIndex] = {
+        ...data.appointments[appointmentIndex],
+        protocol,
+        visit,
+        doctor,
+        name,
+        patientNumber,
+        birthDate,
+        notes,
+        appointmentDate
+      };
+      delete appointmentForm.dataset.editId;
+    }
+  } else {
+    // Crear nueva cita
+    data.appointments.push({
+      id: createId(),
+      protocol,
+      visit,
+      doctor,
+      name,
+      patientNumber,
+      birthDate,
+      notes,
+      appointmentDate,
+      arrivalTime: null,
+      absent: false,
+      absenceReason: ''
+    });
+  }
 
   saveData(data);
+  
+  // Restaurar el botón de submit
+  const submitBtn = appointmentForm.querySelector('button[type="submit"]');
+  if (submitBtn.textContent !== 'Agregar a lista') {
+    submitBtn.textContent = 'Agregar a lista';
+  }
+  
   appointmentForm.reset();
   setDefaultDates();
   renderTables();
@@ -255,32 +284,49 @@ function markArrival(button) {
   handleArrival(button.dataset.id);
 }
 
+function editAppointment(button) {
+  const id = button.dataset.id;
+  const data = loadData();
+  const appointment = data.appointments.find(item => item.id === id);
+  if (!appointment) return;
+  
+  // Cargar datos en el formulario
+  document.getElementById('visit').value = appointment.visit || '';
+  document.getElementById('protocol').value = appointment.protocol || '';
+  document.getElementById('doctor').value = appointment.doctor || '';
+  document.getElementById('appointmentDate').value = appointment.appointmentDate || '';
+  document.getElementById('notes').value = appointment.notes || '';
+  
+  // Actualizar selects de paciente
+  populatePatientNumbers(appointment.protocol);
+  
+  // Seleccionar el paciente después de que se carguen las opciones
+  setTimeout(() => {
+    document.getElementById('patientNumber').value = appointment.patientNumber || '';
+    updateNameFromPatient();
+  }, 100);
+  
+  // Guardar el ID para saber que estamos editando
+  appointmentForm.dataset.editId = id;
+  
+  // Mostrar el formulario
+  document.getElementById('toggleForm').classList.remove('collapsed');
+  document.getElementById('formContent').classList.remove('hidden');
+  
+  // Scroll al formulario
+  document.getElementById('toggleForm').scrollIntoView({ behavior: 'smooth' });
+  
+  // Cambiar el botón de submit
+  const submitBtn = appointmentForm.querySelector('button[type="submit"]');
+  submitBtn.textContent = 'Actualizar cita';
+}
+
 function deleteAppointment(button) {
   const id = button.dataset.id;
   if (!confirm('¿Estás seguro de que deseas eliminar este paciente de la lista?')) return;
   
   const data = loadData();
   data.appointments = data.appointments.filter(item => item.id !== id);
-  saveData(data);
-  renderTables();
-}
-
-function markNoAttendance(button) {
-  const id = button.dataset.id;
-  const reason = prompt('Ingresa la razón por la que el paciente no asistió:');
-  
-  if (reason === null) return; // Usuario canceló
-  if (reason.trim() === '') {
-    alert('Por favor, ingresa una razón.');
-    return;
-  }
-  
-  const data = loadData();
-  const appointment = data.appointments.find(item => item.id === id);
-  if (!appointment) return;
-  
-  appointment.absent = true;
-  appointment.absenceReason = reason.trim();
   saveData(data);
   renderTables();
 }

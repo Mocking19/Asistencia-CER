@@ -84,8 +84,24 @@ function deleteAppointmentFromFirebase(id) {
   return appointmentsRef.child(id).remove();
 }
 
+function updateOrderInFirebase(id, updates) {
+  return ordersRef.child(id).update(updates);
+}
+
+function deleteOrderFromFirebase(id) {
+  return ordersRef.child(id).remove();
+}
+
 function addObservationToFirebase(observationObj) {
   return observationsRef.push(observationObj);
+}
+
+function updateObservationInFirebase(id, updates) {
+  return observationsRef.child(id).update(updates);
+}
+
+function deleteObservationFromFirebase(id) {
+  return observationsRef.child(id).remove();
 }
 
 function setupObservationsListener() {
@@ -210,8 +226,8 @@ function buildAppointmentRow(appointment) {
   let actionsHtml = '';
   if (!hasArrived && !isAbsent) {
     actionsHtml = `
-      <button class="btn-small" data-id="${appointment.id}" onclick="markNoAttendance(this)">No asistió</button>
-      <button class="btn-small danger" data-id="${appointment.id}" onclick="deleteAppointment(this)">Eliminar</button>
+      <button class="btn-icon edit" data-id="${appointment.id}" title="Editar visita" onclick="editAppointment(this)">✎</button>
+      <button class="btn-icon delete" data-id="${appointment.id}" title="Eliminar" onclick="deleteAppointment(this)">✕</button>
     `;
   }
 
@@ -241,6 +257,10 @@ function buildOrderRow(order) {
     <td>${order.protocol}</td>
     <td>${order.patientNumber}</td>
     <td>${order.name}</td>
+    <td>
+      <button class="btn-icon edit" data-id="${order.id}" title="Editar pedido" onclick="editOrder(this)">✎</button>
+      <button class="btn-icon delete" data-id="${order.id}" title="Eliminar" onclick="deleteOrder(this)">✕</button>
+    </td>
   `;
   return tr;
 }
@@ -250,6 +270,10 @@ function buildObservationRow(observation) {
   tr.innerHTML = `
     <td>${formatDateFromString(observation.observationDate)}</td>
     <td>${observation.observationText}</td>
+    <td>
+      <button class="btn-icon edit" data-id="${observation.id}" title="Editar observación" onclick="editObservation(this)">✎</button>
+      <button class="btn-icon delete" data-id="${observation.id}" title="Eliminar" onclick="deleteObservation(this)">✕</button>
+    </td>
   `;
   return tr;
 }
@@ -336,7 +360,7 @@ function addAppointment(event) {
   const notes = document.getElementById('notes').value.trim();
   const appointmentDate = document.getElementById('appointmentDate').value;
 
-  if (!protocol || !visit || !doctor || !name || !patientNumber || !birthDate || !appointmentDate) {
+  if (!protocol || !visit || !doctor || !name || !patientNumber || !appointmentDate) {
     return;
   }
 
@@ -354,12 +378,28 @@ function addAppointment(event) {
     absenceReason: ''
   };
 
-  addAppointmentToFirebase(appointmentObj)
-    .then(() => {
-      appointmentForm.reset();
-      setDefaultDates();
-    })
-    .catch(error => console.error('Error al agregar cita:', error));
+  const editId = appointmentForm.dataset.editId;
+  
+  if (editId) {
+    // Actualizar cita existente
+    updateAppointmentInFirebase(editId, appointmentObj)
+      .then(() => {
+        delete appointmentForm.dataset.editId;
+        const submitBtn = appointmentForm.querySelector('button[type="submit"]');
+        submitBtn.textContent = 'Agregar a lista';
+        appointmentForm.reset();
+        setDefaultDates();
+      })
+      .catch(error => console.error('Error al actualizar cita:', error));
+  } else {
+    // Crear nueva cita
+    addAppointmentToFirebase(appointmentObj)
+      .then(() => {
+        appointmentForm.reset();
+        setDefaultDates();
+      })
+      .catch(error => console.error('Error al agregar cita:', error));
+  }
 }
 
 function addOrder(event) {
@@ -385,12 +425,75 @@ function addOrder(event) {
     createdAt: new Date().toISOString()
   };
 
-  addOrderToFirebase(orderObj)
-    .then(() => {
-      orderForm.reset();
-      setDefaultDates();
-    })
-    .catch(error => console.error('Error al programar pedido:', error));
+  const editId = orderForm.dataset.editId;
+  
+  if (editId) {
+    // Actualizar pedido existente
+    updateOrderInFirebase(editId, orderObj)
+      .then(() => {
+        delete orderForm.dataset.editId;
+        const submitBtn = orderForm.querySelector('button[type="submit"]');
+        submitBtn.textContent = 'Programar pedido';
+        orderForm.reset();
+        setDefaultDates();
+      })
+      .catch(error => console.error('Error al actualizar pedido:', error));
+  } else {
+    // Crear nuevo pedido
+    addOrderToFirebase(orderObj)
+      .then(() => {
+        orderForm.reset();
+        setDefaultDates();
+      })
+      .catch(error => console.error('Error al programar pedido:', error));
+  }
+}
+
+function editOrder(button) {
+  const id = button.dataset.id;
+  const ordersArray = Object.keys(ordersData).map(key => ({
+    id: key,
+    ...ordersData[key]
+  }));
+  const order = ordersArray.find(item => item.id === id);
+  if (!order) return;
+  
+  // Cargar datos en el formulario
+  document.getElementById('orderType').value = order.orderType || '';
+  document.getElementById('orderTime').value = order.orderTime || '';
+  document.getElementById('orderDate').value = order.orderDate || '';
+  document.getElementById('orderProtocol').value = order.protocol || '';
+  
+  // Actualizar selects de paciente
+  populatePatientNumbers(order.protocol, orderPatientNumberSelect, orderNameInput);
+  
+  // Seleccionar el paciente después de que se carguen las opciones
+  setTimeout(() => {
+    document.getElementById('orderPatientNumber').value = order.patientNumber || '';
+    updateNameFromPatient(orderPatientNumberSelect, orderNameInput);
+  }, 100);
+  
+  // Guardar el ID para saber que estamos editando
+  orderForm.dataset.editId = id;
+  
+  // Mostrar el formulario
+  document.getElementById('toggleOrderForm').classList.remove('collapsed');
+  document.getElementById('orderFormContent').classList.remove('hidden');
+  
+  // Scroll al formulario
+  document.getElementById('toggleOrderForm').scrollIntoView({ behavior: 'smooth' });
+  
+  // Cambiar el botón de submit
+  const submitBtn = orderForm.querySelector('button[type="submit"]');
+  submitBtn.textContent = 'Actualizar pedido';
+}
+
+function deleteOrder(button) {
+  const id = button.dataset.id;
+  if (!confirm('¿Estás seguro de que deseas eliminar este pedido?')) return;
+  
+  deleteOrderFromFirebase(id)
+    .catch(error => console.error('Error al eliminar pedido:', error));
 }
 
 function addObservation(event) {
@@ -451,19 +554,48 @@ function deleteAppointment(button) {
 }
 
 function markNoAttendance(button) {
+  // Esta función ahora se llama editAppointment
+  editAppointment(button);
+}
+
+function editAppointment(button) {
   const id = button.dataset.id;
-  const reason = prompt('Ingresa la razón por la que el paciente no asistió:');
+  const appointmentArray = Object.keys(appointmentsData).map(key => ({
+    id: key,
+    ...appointmentsData[key]
+  }));
+  const appointment = appointmentArray.find(item => item.id === id);
+  if (!appointment) return;
   
-  if (reason === null) return;
-  if (reason.trim() === '') {
-    alert('Por favor, ingresa una razón.');
-    return;
-  }
+  // Cargar datos en el formulario
+  document.getElementById('visit').value = appointment.visit || '';
+  document.getElementById('protocol').value = appointment.protocol || '';
+  document.getElementById('doctor').value = appointment.doctor || '';
+  document.getElementById('appointmentDate').value = appointment.appointmentDate || '';
+  document.getElementById('notes').value = appointment.notes || '';
   
-  updateAppointmentInFirebase(id, {
-    absent: true,
-    absenceReason: reason.trim()
-  }).catch(error => console.error('Error al marcar ausencia:', error));
+  // Actualizar selects de paciente
+  populatePatientNumbers(appointment.protocol);
+  
+  // Seleccionar el paciente después de que se carguen las opciones
+  setTimeout(() => {
+    document.getElementById('patientNumber').value = appointment.patientNumber || '';
+    updateNameFromPatient();
+  }, 100);
+  
+  // Guardar el ID para saber que estamos editando
+  appointmentForm.dataset.editId = id;
+  
+  // Mostrar el formulario
+  document.getElementById('toggleForm').classList.remove('collapsed');
+  document.getElementById('formContent').classList.remove('hidden');
+  
+  // Scroll al formulario
+  document.getElementById('toggleForm').scrollIntoView({ behavior: 'smooth' });
+  
+  // Cambiar el botón de submit
+  const submitBtn = appointmentForm.querySelector('button[type="submit"]');
+  submitBtn.textContent = 'Actualizar cita';
 }
 
 function downloadPdf() {

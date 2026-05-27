@@ -511,13 +511,57 @@ function addObservation(event) {
     createdAt: new Date().toISOString()
   };
 
-  addObservationToFirebase(observationObj)
-    .then(() => {
-      extraObservationForm.reset();
-      setDefaultDates();
-      setDefaultObservationDate();
+  const editId = extraObservationForm.dataset.editId;
+  if (editId) {
+    updateObservationInFirebase(editId, {
+      observationDate,
+      observationText
     })
-    .catch(error => console.error('Error al guardar observación:', error));
+      .then(() => {
+        delete extraObservationForm.dataset.editId;
+        const submitBtn = extraObservationForm.querySelector('button[type="submit"]');
+        submitBtn.textContent = 'Guardar observación';
+        extraObservationForm.reset();
+        setDefaultObservationDate();
+      })
+      .catch(error => console.error('Error al actualizar observación:', error));
+  } else {
+    addObservationToFirebase(observationObj)
+      .then(() => {
+        extraObservationForm.reset();
+        setDefaultObservationDate();
+      })
+      .catch(error => console.error('Error al guardar observación:', error));
+  }
+}
+
+function editObservation(button) {
+  const id = button.dataset.id;
+  const observationsArray = Object.keys(observationsData).map(key => ({
+    id: key,
+    ...observationsData[key]
+  }));
+  const observation = observationsArray.find(item => item.id === id);
+  if (!observation) return;
+
+  document.getElementById('extraObservationDate').value = observation.observationDate || '';
+  document.getElementById('extraObservationText').value = observation.observationText || '';
+  extraObservationForm.dataset.editId = id;
+
+  const submitBtn = extraObservationForm.querySelector('button[type="submit"]');
+  submitBtn.textContent = 'Actualizar observación';
+
+  document.getElementById('toggleObservationForm').classList.remove('collapsed');
+  document.getElementById('observationFormContent').classList.remove('hidden');
+  document.getElementById('toggleObservationForm').scrollIntoView({ behavior: 'smooth' });
+}
+
+function deleteObservation(button) {
+  const id = button.dataset.id;
+  if (!confirm('¿Estás seguro de que deseas eliminar esta observación extraordinaria?')) return;
+
+  deleteObservationFromFirebase(id)
+    .catch(error => console.error('Error al eliminar observación:', error));
 }
 
 function setDefaultDates() {
@@ -801,6 +845,9 @@ function bindEvents() {
   resetObservationFormButton.addEventListener('click', () => {
     extraObservationForm.reset();
     setDefaultObservationDate();
+    delete extraObservationForm.dataset.editId;
+    const submitBtn = extraObservationForm.querySelector('button[type="submit"]');
+    if (submitBtn) submitBtn.textContent = 'Guardar observación';
   });
   viewDateInput.addEventListener('change', renderTables);
   downloadPdfButton.addEventListener('click', downloadPdf);

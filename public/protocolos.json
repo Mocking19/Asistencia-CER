@@ -588,7 +588,7 @@
         "fecha_nacimiento": "13-09-1995"
       },
       {
-        "numero_paciente": "500610-8413",
+        "numero_paciente": "500610-80413",
         "nombre": "ESTEBAN PACHECO",
         "fecha_nacimiento": "03-06-2000"
       },
@@ -1223,6 +1223,11 @@
         "fecha_nacimiento": "0-04-1958"
       },
       {
+        "numero_paciente": "1050003",
+        "nombre": "YAMILA ONTIVEROS",
+        "fecha_nacimiento": "18-07-1996"
+      },
+      {
         "numero_paciente": "1050004",
         "nombre": "CARINA JOFRÉ",
         "fecha_nacimiento": "18-07-1979"
@@ -1251,6 +1256,11 @@
         "numero_paciente": "167550176",
         "nombre": "NATALIA VERÓNICA CANTOS",
         "fecha_nacimiento": "12-09-1975"
+      },
+      {
+        "numero_paciente": "167550172",
+        "nombre": "LUDMILA ALBORNOZ",
+        "fecha_nacimiento": "27-02-2007"
       },
       {
         "numero_paciente": "167550187",
@@ -1333,8 +1343,8 @@
     "protocolo": "VIKTORIA",
     "pacientes": [
       {
-        "numero_paciente": "VIKTORIA",
-        "nombre": "9004-1013 MARÍA DE LAS MERCEDES VARGAS",
+        "numero_paciente": "9004-1013",
+        "nombre": "MARÍA DE LAS MERCEDES VARGAS",
         "fecha_nacimiento": "02-07-1959"
       },
       {
@@ -1463,6 +1473,11 @@
         "fecha_nacimiento": "20-11-1964"
       },
       {
+        "numero_paciente": "9004-1027",
+          "nombre": "NORMA PILAR MANRIQUE",
+        "fecha_nacimiento": "07/12/1946"
+      },
+      {
         "numero_paciente": "9004-1028",
         "nombre": "PAOLA VIVIANA VALDEARENAS",
         "fecha_nacimiento": "12-05-1983"
@@ -1481,6 +1496,11 @@
         "numero_paciente": "9004-1031",
         "nombre": "NORMA BEATRIZ TEJADA",
         "fecha_nacimiento": "31-01-1964"
+      },
+      {
+        "numero_paciente": "9004-1032",
+        "nombre": "LORENA IVANA MAS",
+        "fecha_nacimiento": "15-05-1974"
       }
     ]
   },
@@ -1498,8 +1518,8 @@
         "fecha_nacimiento": "15-04-1996"
       },
       {
-        "numero_paciente": "WO44263",
-        "nombre": "30991 AZUCENA LIDIA BRIZUELA (falla de screening)",
+        "numero_paciente": "30991",
+        "nombre": "AZUCENA LIDIA BRIZUELA (falla de screening)",
         "fecha_nacimiento": "25-02-1959"
       },
       {

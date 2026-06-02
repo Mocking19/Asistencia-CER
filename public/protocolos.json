@@ -1,4 +1,14 @@
 [
+   {
+    "protocolo": "230-LE-301",
+    "pacientes": [
+      {
+        "numero_paciente": "7951-A3A-201A",
+        "nombre": "JOSUE KLEHR",
+        "fecha_nacimiento": "13-05-1997"
+      }
+    ]
+  },
   {
     "protocolo": "21885",
     "pacientes": [

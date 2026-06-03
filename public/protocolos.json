@@ -8,6 +8,15 @@
         "fecha_nacimiento": "13-05-1997"
       }
     ]
+  },{
+    "protocolo": "230-LE-306",
+    "pacientes": [
+      {
+        "numero_paciente": "7951-B3B-001A",
+        "nombre": "JOSUE KLEHR",
+        "fecha_nacimiento": "24-07-1978"
+      }
+    ]
   },
   {
     "protocolo": "21885",

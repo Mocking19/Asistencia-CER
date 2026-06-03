@@ -1515,32 +1515,17 @@
     ]
   },
   {
-    "protocolo": "WO44263",
+    "protocolo": "WO43571",
     "pacientes": [
       {
-        "numero_paciente": "30238",
-        "nombre": "MARISA CORNEJO",
-        "fecha_nacimiento": "05-06-1988"
+        "numero_paciente": "10830/101298",
+        "nombre": "MARTHA ABALLAY",
+        "fecha_nacimiento": "11-11-1953"
       },
       {
-        "numero_paciente": "30886",
-        "nombre": "Aldana Nuñez (falla de screening)",
-        "fecha_nacimiento": "15-04-1996"
-      },
-      {
-        "numero_paciente": "30991",
-        "nombre": "AZUCENA LIDIA BRIZUELA (falla de screening)",
-        "fecha_nacimiento": "25-02-1959"
-      },
-      {
-        "numero_paciente": "301443",
-        "nombre": "MARIA EUGENIA AGÜERO (FALLA DE SCREENING)",
-        "fecha_nacimiento": "25-01-1970"
-      },
-      {
-        "numero_paciente": "301514",
-        "nombre": "ELBA BEATRIZ SANCHEZ (falla de screening)",
-        "fecha_nacimiento": "23-02-1972"
+        "numero_paciente": "101086",
+        "nombre": "MYRIAM QUETGLAS",
+        "fecha_nacimiento": "04-05-1966"
       }
     ]
   }

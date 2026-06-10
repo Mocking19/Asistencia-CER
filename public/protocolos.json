@@ -236,10 +236,15 @@
         "nombre": "FABIANA MARIANA AGUIRRE",
         "fecha_nacimiento": "07-07-1973"
       },
+       {
+        "numero_paciente": "E0202502",
+        "nombre": "YESICA QUINTEROS",
+        "fecha_nacimiento": "07-07-1973"
+      },
       {
         "numero_paciente": "E0202504",
         "nombre": "NACNY GRACIELA VELAZQUEZ",
-        "fecha_nacimiento": "10-08-1970"
+        "fecha_nacimiento": "31-01-1983"
       },
       {
         "numero_paciente": "E0202505",

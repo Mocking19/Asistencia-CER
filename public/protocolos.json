@@ -1560,5 +1560,15 @@
         "fecha_nacimiento": "23-02-1972"
       }
     ]
+  },
+    {
+    "protocolo": "WILLOW",
+    "pacientes": [
+      {
+        "numero_paciente": "1050006",
+        "nombre": "BENITEZ JACQUELINE",
+        "fecha_nacimiento": "05-06-1991"
+      }
+    ]
   }
 ]

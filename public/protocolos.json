@@ -1309,6 +1309,11 @@
         "numero_paciente": "20020-00001-301801",
         "nombre": "EUGENIA VILLALONGA",
         "fecha_nacimiento": "14-01-1954"
+      },
+        {
+        "numero_paciente": "20020-00003",
+        "nombre": "ROSARIO DIAZ",
+        "fecha_nacimiento": "XX-XX-XXXX"
       }
     ]
   },

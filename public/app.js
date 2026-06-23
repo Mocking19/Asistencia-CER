@@ -31,6 +31,19 @@ const orderPatientNumberSelect = document.getElementById('orderPatientNumber');
 const nameInput = document.getElementById('name');
 const birthDateInput = document.getElementById('birthDate');
 const orderNameInput = document.getElementById('orderName');
+const patientProtocolFilter = document.getElementById('patientProtocolFilter');
+const patientSearchInput = document.getElementById('patientSearch');
+const patientClearFilters = document.getElementById('patientClearFilters');
+const patientFilterInfo = document.getElementById('patientFilterInfo');
+const patientPageSize = document.getElementById('patientPageSize');
+const patientPrevPage = document.getElementById('patientPrevPage');
+const patientNextPage = document.getElementById('patientNextPage');
+const patientPageLabel = document.getElementById('patientPageLabel');
+const patientsTableBody = document.querySelector('#patientsTable tbody');
+const attendancePage = document.getElementById('attendancePage');
+const patientViewerPage = document.getElementById('patientViewerPage');
+const navAttendance = document.getElementById('navAttendance');
+const navPatients = document.getElementById('navPatients');
 const orderTypeInput = document.getElementById('orderType');
 const orderTimeInput = document.getElementById('orderTime');
 const orderDateInput = document.getElementById('orderDate');
@@ -46,6 +59,8 @@ let protocolosData = [];
 let appointmentsData = {};  // Object with { id: appointment }
 let ordersData = {};       // Object with { id: order }
 let observationsData = {}; // Object with { id: observation }
+let patientCurrentPage = 1;
+let patientRowsPerPage = 10;
 
 const ordersRef = database.ref('orders');
 const observationsRef = database.ref('observations');
@@ -130,6 +145,7 @@ function populateProtocolSelect(protocolos) {
   orderProtocolSelect.innerHTML = `<option value="">Selecciona un protocolo</option>${options}`;
   patientNumberSelect.innerHTML = '<option value="">Selecciona un protocolo primero</option>';
   orderPatientNumberSelect.innerHTML = '<option value="">Selecciona un protocolo primero</option>';
+  patientProtocolFilter.innerHTML = `<option value="">Todos los protocolos</option>${options}`;
   nameInput.value = '';
   orderNameInput.value = '';
 }
@@ -347,6 +363,8 @@ function renderTables() {
     observationTableSection.classList.remove('hidden');
     observationsForDate.forEach(observation => observationsTableBody.appendChild(buildObservationRow(observation)));
   }
+
+  renderPatientViewer();
 }
 
 function addAppointment(event) {
@@ -580,6 +598,78 @@ function changeSelectedDate(days) {
   currentDate.setDate(currentDate.getDate() + days);
   viewDateInput.value = getLocalDateString(currentDate);
   renderTables();
+}
+
+function renderPatientViewer() {
+  const selectedProtocol = patientProtocolFilter.value;
+  const query = patientSearchInput.value.trim().toLowerCase();
+
+  const patientRows = protocolosData.flatMap(item => {
+    return item.pacientes.map(paciente => ({
+      protocolo: item.protocolo,
+      numero_paciente: paciente.numero_paciente,
+      nombre: paciente.nombre,
+      fecha_nacimiento: paciente.fecha_nacimiento
+    }));
+  });
+
+  const filteredRows = patientRows.filter(row => {
+    const protocolMatch = selectedProtocol ? row.protocolo === selectedProtocol : true;
+    const queryMatch = query
+      ? row.numero_paciente.toLowerCase().includes(query) || row.nombre.toLowerCase().includes(query)
+      : true;
+    return protocolMatch && queryMatch;
+  });
+
+  const totalRows = filteredRows.length;
+  const pageCount = Math.max(1, Math.ceil(totalRows / patientRowsPerPage));
+  if (patientCurrentPage > pageCount) patientCurrentPage = pageCount;
+
+  const startIndex = (patientCurrentPage - 1) * patientRowsPerPage;
+  const pagedRows = filteredRows.slice(startIndex, startIndex + patientRowsPerPage);
+
+  patientsTableBody.innerHTML = '';
+  if (pagedRows.length === 0) {
+    patientsTableBody.innerHTML = `<tr><td colspan="4">No se encontraron pacientes con estos filtros.</td></tr>`;
+  } else {
+    pagedRows.forEach(row => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${row.protocolo}</td>
+        <td>${row.numero_paciente}</td>
+        <td>${row.nombre}</td>
+        <td>${row.fecha_nacimiento}</td>
+      `;
+      patientsTableBody.appendChild(tr);
+    });
+  }
+
+  patientPageLabel.textContent = `Página ${patientCurrentPage} de ${pageCount}`;
+  patientPrevPage.disabled = patientCurrentPage <= 1;
+  patientNextPage.disabled = patientCurrentPage >= pageCount;
+
+  const filterSummary = [];
+  if (selectedProtocol) filterSummary.push(`protocolo ${selectedProtocol}`);
+  if (query) filterSummary.push(`búsqueda "${query}"`);
+  patientFilterInfo.textContent = filterSummary.length > 0
+    ? `${totalRows} paciente(s) encontrados con ${filterSummary.join(' y ')}`
+    : `${totalRows} paciente(s) en total`;
+}
+
+function switchPage(page) {
+  const activeClass = 'active';
+  if (page === 'attendance') {
+    attendancePage.classList.remove('hidden');
+    patientViewerPage.classList.add('hidden');
+    navAttendance.classList.add(activeClass);
+    navPatients.classList.remove(activeClass);
+  } else {
+    attendancePage.classList.add('hidden');
+    patientViewerPage.classList.remove('hidden');
+    navAttendance.classList.remove(activeClass);
+    navPatients.classList.add(activeClass);
+    renderPatientViewer();
+  }
 }
 
 function markArrival(button) {
@@ -837,6 +927,27 @@ function bindEvents() {
     orderForm.reset();
     setDefaultDates();
   });
+  patientProtocolFilter.addEventListener('change', () => { patientCurrentPage = 1; renderPatientViewer(); });
+  patientSearchInput.addEventListener('input', () => { patientCurrentPage = 1; renderPatientViewer(); });
+  patientPageSize.addEventListener('change', () => { patientRowsPerPage = Number(patientPageSize.value); patientCurrentPage = 1; renderPatientViewer(); });
+  patientPrevPage.addEventListener('click', () => {
+    if (patientCurrentPage > 1) {
+      patientCurrentPage -= 1;
+      renderPatientViewer();
+    }
+  });
+  patientNextPage.addEventListener('click', () => {
+    patientCurrentPage += 1;
+    renderPatientViewer();
+  });
+  patientClearFilters.addEventListener('click', () => {
+    patientProtocolFilter.value = '';
+    patientSearchInput.value = '';
+    patientCurrentPage = 1;
+    renderPatientViewer();
+  });
+  navAttendance.addEventListener('click', () => switchPage('attendance'));
+  navPatients.addEventListener('click', () => switchPage('patients'));
   protocolSelect.addEventListener('change', () => populatePatientNumbers(protocolSelect.value));
   orderProtocolSelect.addEventListener('change', () => populatePatientNumbers(orderProtocolSelect.value, orderPatientNumberSelect, orderNameInput));
   patientNumberSelect.addEventListener('change', () => updateNameFromPatient(patientNumberSelect, nameInput));
@@ -879,6 +990,79 @@ function toggleCollapsible(section) {
   contentEl.classList.toggle('hidden');
 }
 
+function renderPatientViewer() {
+  const selectedProtocol = patientProtocolFilter.value;
+  const query = patientSearchInput.value.trim().toLowerCase();
+
+  const patientRows = protocolosData.flatMap(item => {
+    return item.pacientes.map(paciente => ({
+      protocolo: item.protocolo,
+      numero_paciente: paciente.numero_paciente,
+      nombre: paciente.nombre,
+      fecha_nacimiento: paciente.fecha_nacimiento
+    }));
+  });
+
+  const filteredRows = patientRows.filter(row => {
+    const protocolMatch = selectedProtocol ? row.protocolo === selectedProtocol : true;
+    const queryMatch = query
+      ? row.numero_paciente.toLowerCase().includes(query) || row.nombre.toLowerCase().includes(query)
+      : true;
+    return protocolMatch && queryMatch;
+  });
+
+  const totalRows = filteredRows.length;
+  const pageCount = Math.max(1, Math.ceil(totalRows / patientRowsPerPage));
+  if (patientCurrentPage > pageCount) patientCurrentPage = pageCount;
+
+  const startIndex = (patientCurrentPage - 1) * patientRowsPerPage;
+  const pagedRows = filteredRows.slice(startIndex, startIndex + patientRowsPerPage);
+
+  patientsTableBody.innerHTML = '';
+
+  if (pagedRows.length === 0) {
+    patientsTableBody.innerHTML = `<tr><td colspan="4">No se encontraron pacientes con estos filtros.</td></tr>`;
+  } else {
+    pagedRows.forEach(row => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${row.protocolo}</td>
+        <td>${row.numero_paciente}</td>
+        <td>${row.nombre}</td>
+        <td>${row.fecha_nacimiento}</td>
+      `;
+      patientsTableBody.appendChild(tr);
+    });
+  }
+
+  patientPageLabel.textContent = `Página ${patientCurrentPage} de ${pageCount}`;
+  patientPrevPage.disabled = patientCurrentPage <= 1;
+  patientNextPage.disabled = patientCurrentPage >= pageCount;
+
+  const filterSummary = [];
+  if (selectedProtocol) filterSummary.push(`protocolo ${selectedProtocol}`);
+  if (query) filterSummary.push(`búsqueda "${query}"`);
+  patientFilterInfo.textContent = filterSummary.length > 0
+    ? `${totalRows} paciente(s) encontrados con ${filterSummary.join(' y ')}`
+    : `${totalRows} paciente(s) en total`;
+}
+
+function switchPage(page) {
+  const activeClass = 'active';
+  if (page === 'attendance') {
+    attendancePage.classList.remove('hidden');
+    patientViewerPage.classList.add('hidden');
+    navAttendance.classList.add(activeClass);
+    navPatients.classList.remove(activeClass);
+  } else {
+    attendancePage.classList.add('hidden');
+    patientViewerPage.classList.remove('hidden');
+    navAttendance.classList.remove(activeClass);
+    navPatients.classList.add(activeClass);
+    renderPatientViewer();
+  }
+}
+
 async function initialize() {
   setDefaultDates();
   viewDateInput.value = getLocalDateString(new Date());
@@ -904,6 +1088,8 @@ async function initialize() {
   document.getElementById('orderFormContent').classList.add('hidden');
   document.getElementById('toggleObservationForm').classList.add('collapsed');
   document.getElementById('observationFormContent').classList.add('hidden');
+
+  switchPage('attendance');
 }
 
 initialize();

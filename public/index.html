@@ -10,22 +10,28 @@
   <header>
     <h1>Registro de Asistencia de Pacientes CER</h1>
     <p>Usa esta aplicación en cualquier navegador para planificar pacientes y marcar su llegada.</p>
+    <nav class="page-nav">
+      <button type="button" id="navAttendance" class="nav-btn active">Asistencia</button>
+      <button type="button" id="navPatients" class="nav-btn">Base de datos</button>
+    </nav>
   </header>
 
   <main>
-    <section class="panel">
-      <div class="section-header">
-        <div>
-          <h2>Asistencia y Pacientes del día</h2>
-          <p id="stats"></p>
+
+    <div id="attendancePage">
+      <section class="panel">
+        <div class="section-header">
+          <div>
+            <h2>Asistencia y Pacientes del día</h2>
+            <p id="stats"></p>
+          </div>
+          <div class="controls-inline">
+            <input type="date" id="viewDate" />
+            <button class="tiny-btn primary" id="downloadPdf">PDF</button>
+          </div>
         </div>
-        <div class="controls-inline">
-          <input type="date" id="viewDate" />
-          <button class="tiny-btn primary" id="downloadPdf">PDF</button>
-        </div>
-      </div>
-      <div class="table-wrap">
-        <table id="appointmentsTable">
+        <div class="table-wrap">
+          <table id="appointmentsTable">
           <thead>
             <tr>
               <th>Visita</th>
@@ -167,6 +173,58 @@
             <button type="button" id="resetObservationForm">Limpiar formulario</button>
           </div>
         </form>
+      </div>
+    </section>
+    </div>
+
+    <section class="panel hidden" id="patientViewerPage">
+      <div class="section-header">
+        <div>
+          <h2>Visualizador de pacientes</h2>
+          <p>Busca por protocolo, nombre o número de paciente para ver todos sus datos.</p>
+        </div>
+        <p id="patientFilterInfo" class="filter-info"></p>
+      </div>
+      <div class="patient-table-actions">
+        <label class="page-size-label">
+          Mostrar filas
+          <select id="patientPageSize">
+            <option value="10">10</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+          \n
+          </select>
+        </label>
+        <div class="patient-search-row">
+          <input type="search" id="patientSearch" placeholder="Buscar por nombre o número" />
+          <button type="button" id="patientClearFilters" class="tiny-btn">Limpiar</button>
+        </div>
+        <div class="pagination-controls">
+          <button type="button" id="patientPrevPage">← Anterior</button>
+          <span id="patientPageLabel">Página 1 de 1</span>
+          <button type="button" id="patientNextPage">Siguiente →</button>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table id="patientsTable">
+          <thead>
+            <tr>
+              <th>
+                <div class="th-with-filter">
+                  <span>Protocolo</span>
+                  <select id="patientProtocolFilter">
+                    <option value="">Todos</option>
+                  </select>
+                </div>
+              </th>
+              <th>Número</th>
+              <th>Nombre</th>
+              <th>Fecha de nacimiento</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
       </div>
     </section>
   </main>

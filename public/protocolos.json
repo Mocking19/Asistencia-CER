@@ -831,27 +831,27 @@
     "protocolo": "IRIS",
     "pacientes": [
       {
-        "numero_paciente": "E02025003",
+        "numero_paciente": "E0205003",
         "nombre": "ULISES MIGUEL ACOSTA (FALLA SCREEN",
         "fecha_nacimiento": "27-05-2004"
       },
       {
-        "numero_paciente": "E02025001",
+        "numero_paciente": "E0205001",
         "nombre": "MARCELA ABALLAY (FALLA SCREEN",
         "fecha_nacimiento": "11-04-1982"
       },
       {
-        "numero_paciente": "E02025002",
+        "numero_paciente": "E0205002",
         "nombre": "ELIZABETH ANDREA LARRIBITE",
         "fecha_nacimiento": "18-02-1986"
       },
       {
-        "numero_paciente": "E02025004",
+        "numero_paciente": "E0205004",
         "nombre": "ROCIO BELEN PAEZ",
         "fecha_nacimiento": "09-01-1988"
       },
       {
-        "numero_paciente": "E02025005",
+        "numero_paciente": "E0205005",
         "nombre": "ALFREDO CORREA",
         "fecha_nacimiento": "23-06-1982"
       }
@@ -1544,17 +1544,17 @@
     "protocolo": "WO44263",
     "pacientes": [
       {
-        "numero_paciente": "30238",
+        "numero_paciente": "300238",
         "nombre": "MARISA CORNEJO",
         "fecha_nacimiento": "05-06-1988"
       },
       {
-        "numero_paciente": "30886",
+        "numero_paciente": "300886",
         "nombre": "Aldana Nuñez (falla de screening)",
         "fecha_nacimiento": "15-04-1996"
       },
       {
-        "numero_paciente": "30991",
+        "numero_paciente": "300991",
         "nombre": "AZUCENA LIDIA BRIZUELA (falla de screening)",
         "fecha_nacimiento": "25-02-1959"
       },

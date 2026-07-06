@@ -21,6 +21,8 @@ const appointmentsTableBody = document.querySelector('#appointmentsTable tbody')
 const ordersTableBody = document.querySelector('#ordersTable tbody');
 const viewDateInput = document.getElementById('viewDate');
 const downloadPdfButton = document.getElementById('downloadPdf');
+const prevDayButton = document.getElementById('prevDayBtn');
+const nextDayButton = document.getElementById('nextDayBtn');
 const stats = document.getElementById('stats');
 const resetFormButton = document.getElementById('resetForm');
 const resetOrderFormButton = document.getElementById('resetOrderForm');
@@ -255,7 +257,8 @@ function buildAppointmentRow(appointment) {
     <td>${appointment.name}</td>
     <td>${appointment.birthDate ? formatDateFromString(appointment.birthDate) : '-'}</td>
     <td>${appointment.doctor}</td>
-    <td>${formatDateFromString(appointment.appointmentDate)}</td>
+    <td>${appointment.appointmentDate ? formatDateFromString(appointment.appointmentDate) : '-'}</td>
+    <td>${appointment.appointmentTime || '-'}</td>
     <td>${appointment.notes || '-'}</td>
     <td>${arrivalHourHtml}</td>
     <td>${statusHtml}</td>
@@ -376,9 +379,10 @@ function addAppointment(event) {
   const patientNumber = document.getElementById('patientNumber').value.trim();
   const birthDate = document.getElementById('birthDate').value;
   const notes = document.getElementById('notes').value.trim();
+  const appointmentTime = document.getElementById('appointmentTime').value;
   const appointmentDate = document.getElementById('appointmentDate').value;
 
-  if (!protocol || !visit || !doctor || !name || !patientNumber || !appointmentDate) {
+  if (!protocol || !visit || !doctor || !name || !patientNumber || !appointmentDate || !appointmentTime) {
     return;
   }
 
@@ -391,6 +395,7 @@ function addAppointment(event) {
     birthDate,
     notes,
     appointmentDate,
+    appointmentTime,
     arrivalTime: null,
     absent: false,
     absenceReason: ''
@@ -586,6 +591,7 @@ function setDefaultDates() {
   const tomorrow = new Date();
   tomorrow.setDate(tomorrow.getDate() + 1);
   document.getElementById('appointmentDate').value = getLocalDateString(tomorrow);
+  document.getElementById('appointmentTime').value = '08:00';
   orderDateInput.value = getLocalDateString(tomorrow);
 }
 
@@ -593,8 +599,16 @@ function setDefaultObservationDate() {
   extraObservationDateInput.value = getLocalDateString(new Date());
 }
 
+function parseDateInput(value) {
+  const [year, month, day] = (value || '').split('-').map(Number);
+  if (!year || !month || !day) {
+    return new Date();
+  }
+  return new Date(year, month - 1, day);
+}
+
 function changeSelectedDate(days) {
-  const currentDate = new Date(viewDateInput.value || getLocalDateString(new Date()));
+  const currentDate = parseDateInput(viewDateInput.value || getLocalDateString(new Date()));
   currentDate.setDate(currentDate.getDate() + days);
   viewDateInput.value = getLocalDateString(currentDate);
   renderTables();
@@ -706,6 +720,7 @@ function editAppointment(button) {
   document.getElementById('protocol').value = appointment.protocol || '';
   document.getElementById('doctor').value = appointment.doctor || '';
   document.getElementById('appointmentDate').value = appointment.appointmentDate || '';
+  document.getElementById('appointmentTime').value = appointment.appointmentTime || '';
   document.getElementById('notes').value = appointment.notes || '';
   
   // Actualizar selects de paciente
@@ -767,7 +782,7 @@ function downloadPdf() {
   let currentY = 90;
   const rowHeight = 18;
 
-  const headers = ['Visita', 'Protocolo', 'N°', 'Paciente', 'Fecha nacimiento', 'Doctor', 'Fecha cita', 'Observaciones', 'Hora'];
+  const headers = ['Visita', 'Protocolo', 'N°', 'Paciente', 'Fecha nacimiento', 'Doctor', 'Fecha de cita', 'Horario de cita', 'Observaciones', 'Hora'];
 
   doc.setFontSize(9);
   doc.text(headers.join(' | '), marginLeft, currentY);
@@ -785,7 +800,8 @@ function downloadPdf() {
         item.name,
         item.birthDate ? formatDateFromString(item.birthDate) : '-',
         item.doctor,
-        formatDateFromString(item.appointmentDate),
+        item.appointmentDate ? formatDateFromString(item.appointmentDate) : '-',
+        item.appointmentTime || '-',
         item.notes || '-',
         formatTime(item.arrivalTime)
       ];
@@ -813,7 +829,7 @@ function downloadPdf() {
     doc.text('Pacientes que no asistieron', marginLeft, currentY);
     currentY += rowHeight;
 
-    const absentHeaders = ['Visita', 'Protocolo', 'N°', 'Paciente', 'Fecha nacimiento', 'Doctor', 'Fecha cita', 'Razón'];
+    const absentHeaders = ['Visita', 'Protocolo', 'N°', 'Paciente', 'Fecha nacimiento', 'Doctor', 'Fecha de cita', 'Horario de cita', 'Razón'];
     doc.setFontSize(9);
     doc.text(absentHeaders.join(' | '), marginLeft, currentY);
     currentY += rowHeight;
@@ -830,7 +846,8 @@ function downloadPdf() {
         item.name,
         item.birthDate ? formatDateFromString(item.birthDate) : '-',
         item.doctor,
-        formatDateFromString(item.appointmentDate),
+        item.appointmentDate ? formatDateFromString(item.appointmentDate) : '-',
+        item.appointmentTime || '-',
         item.absenceReason || '-'
       ];
       const text = row.join(' | ');
@@ -961,6 +978,8 @@ function bindEvents() {
     if (submitBtn) submitBtn.textContent = 'Guardar observación';
   });
   viewDateInput.addEventListener('change', renderTables);
+  prevDayButton.addEventListener('click', () => changeSelectedDate(-1));
+  nextDayButton.addEventListener('click', () => changeSelectedDate(1));
   downloadPdfButton.addEventListener('click', downloadPdf);
 
   // Collapsibles

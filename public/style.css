@@ -19,6 +19,7 @@
 body {
   margin: 0;
   font-family: Inter, system-ui, sans-serif;
+  font-size: 14px;
   background: var(--bg);
   color: var(--text);
 }
@@ -38,7 +39,7 @@ header {
 
 header h1 {
   margin: 0;
-  font-size: 1.9rem;
+  font-size: 1.8rem;
 }
 
 .header-top {
@@ -219,6 +220,18 @@ main {
   background: #fff;
 }
 
+.date-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.date-nav .tiny-btn {
+  min-width: 38px;
+  width: 38px;
+  padding: 0;
+}
+
 .tiny-btn {
   display: inline-flex;
   align-items: center;
@@ -346,6 +359,7 @@ label {
   gap: 8px;
   font-weight: 600;
   color: var(--muted);
+  font-size: 0.95rem;
 }
 
 input,
@@ -362,6 +376,7 @@ textarea,
 select {
   padding: 10px 12px;
   background: #fff;
+  font-size: 0.95rem;
 }
 
 textarea {
@@ -377,13 +392,14 @@ textarea {
 }
 
 button {
-  padding: 12px 18px;
+  padding: 10px 16px;
   background: var(--button-bg);
   color: var(--button-text);
   border: 1px solid var(--button-border);
   border-radius: 10px;
   cursor: pointer;
   transition: transform .15s ease, background .15s ease;
+  font-size: 0.95rem;
 }
 
 button:hover {
@@ -416,9 +432,16 @@ table {
 
 th,
 td {
-  padding: 12px 10px;
+  padding: 8px 6px;
   border-bottom: 1px solid var(--border);
   text-align: left;
+  font-size: 0.86rem;
+  line-height: 1.25;
+}
+
+th {
+  font-size: 0.82rem;
+  letter-spacing: 0.01em;
 }
 
 th {

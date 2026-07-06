@@ -28,7 +28,11 @@
             <p id="stats"></p>
           </div>
           <div class="controls-inline">
-            <input type="date" id="viewDate" />
+            <div class="date-nav">
+              <button type="button" class="tiny-btn" id="prevDayBtn" aria-label="Día anterior">←</button>
+              <input type="date" id="viewDate" />
+              <button type="button" class="tiny-btn" id="nextDayBtn" aria-label="Día siguiente">→</button>
+            </div>
             <button class="tiny-btn primary" id="downloadPdf">PDF</button>
           </div>
         </div>
@@ -43,6 +47,7 @@
               <th>Fecha de nacimiento</th>
               <th>Doctor</th>
               <th>Fecha de cita</th>
+              <th>Horario de cita</th>
               <th>Observaciones</th>
               <th>Hora*</th>
               <th>Estado</th>
@@ -118,6 +123,7 @@
             <label>Fecha de nacimiento<input type="date" id="birthDate" readonly /></label>
             <label>Doctor<input type="text" id="doctor" required /></label>
             <label>Fecha de cita<input type="date" id="appointmentDate" required /></label>
+            <label>Horario de cita<input type="time" id="appointmentTime" required /></label>
             <label>Observaciones<textarea id="notes"></textarea></label>
           </div>
           <div class="actions">

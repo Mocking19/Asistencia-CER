@@ -446,11 +446,6 @@
         "fecha_nacimiento": "14-06-1944"
       },
       {
-        "numero_paciente": "54071003",
-        "nombre": "MANUEL FRANCISCO LOPEZ",
-        "fecha_nacimiento": "10-01-1951"
-      },
-      {
         "numero_paciente": "54050001",
         "nombre": "FELICIANO LEDESMA",
         "fecha_nacimiento": "09-03-1955"
@@ -538,7 +533,7 @@
         "numero_paciente": "54071003",
         "nombre": "MANUEL FRANCISCO LOPEZ",
         "fecha_nacimiento": "10-01-1951"
-      }
+      },
       {
         "numero_paciente": "54071001",
         "nombre": "RAMÓN GUILLERMO ESPINDOLA",

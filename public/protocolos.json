@@ -209,13 +209,8 @@
     ]
   },
   {
-    "protocolo": "AZ CAMBRIA",
+    "protocolo": "AZ CAMBRIA 1",
     "pacientes": [
-      {
-        "numero_paciente": "E0202503",
-        "nombre": "ALEJANDRA VANESA HERRERA PEREZ",
-        "fecha_nacimiento": "26-12-1976"
-      },
       {
         "numero_paciente": "E0208006",
         "nombre": "PETRONA AMALIA MORAN",
@@ -227,9 +222,54 @@
         "fecha_nacimiento": "26-04-1967"
       },
       {
-        "numero_paciente": "E0202005",
+        "numero_paciente": "E0208005",
         "nombre": "MARGARITA NIEVES AGUIRRE",
         "fecha_nacimiento": "20-07-1939"
+      },
+      {
+        "numero_paciente": "E0208001",
+        "nombre": "SILVIA MABEL PINTO",
+        "fecha_nacimiento": "26-08-1967"
+      },
+      {
+        "numero_paciente": "E0208002",
+        "nombre": "NORMA TEJADA",
+        "fecha_nacimiento": "14-06-1981"
+      },
+      {
+        "numero_paciente": "E0208003",
+        "nombre": "SILVIA DEL CARMEN MOLINERO",
+        "fecha_nacimiento": "13-04-1952"
+      },
+      {
+        "numero_paciente": "E0208003",
+        "nombre": "SILVIA MOLINERO",
+        "fecha_nacimiento": "13-04-1952"
+      },
+      {
+        "numero_paciente": "E0208004",
+        "nombre": "PAULA MARÍA VIDAL GUTIERREZ",
+        "fecha_nacimiento": "09-03-1988"
+      },
+      {
+        "numero_paciente": "E0208004",
+        "nombre": "PAULA VIDAL",
+        "fecha_nacimiento": "09-03-1988"
+      },
+      {
+        "numero_paciente": "E0208005",
+        "nombre": "MARGARITA AGUIRRE",
+        "fecha_nacimiento": "20-07-1939"
+      }
+    ]
+  },
+  {
+    "protocolo": "AZ CAMBRIA 2",
+    "pacientes": [
+      {
+        "numero_paciente": "E0202503",
+        "nombre": "ALEJANDRA VANESA HERRERA PEREZ",
+        "fecha_nacimiento": "26-12-1976"
       },
       {
         "numero_paciente": "E0202501",
@@ -384,41 +424,6 @@
         "numero_paciente": "E0202533",
         "nombre": "ROMINA CUELLO",
         "fecha_nacimiento": "06-01-1986"
-      },
-      {
-        "numero_paciente": "E0208001",
-        "nombre": "SILVIA MABEL PINTO",
-        "fecha_nacimiento": "26-08-1967"
-      },
-      {
-        "numero_paciente": "E0208002",
-        "nombre": "NORMA TEJADA",
-        "fecha_nacimiento": "14-06-1981"
-      },
-      {
-        "numero_paciente": "E0208003",
-        "nombre": "SILVIA DEL CARMEN MOLINERO",
-        "fecha_nacimiento": "13-04-1952"
-      },
-      {
-        "numero_paciente": "E0208003",
-        "nombre": "SILVIA MOLINERO",
-        "fecha_nacimiento": "13-04-1952"
-      },
-      {
-        "numero_paciente": "E0208004",
-        "nombre": "PAULA MARÍA VIDAL GUTIERREZ",
-        "fecha_nacimiento": "09-03-1988"
-      },
-      {
-        "numero_paciente": "E0208004",
-        "nombre": "PAULA VIDAL",
-        "fecha_nacimiento": "09-03-1988"
-      },
-      {
-        "numero_paciente": "E0208005",
-        "nombre": "MARGARITA AGUIRRE",
-        "fecha_nacimiento": "20-07-1939"
       }
     ]
   },
@@ -1072,11 +1077,6 @@
         "numero_paciente": "10182",
         "nombre": "ANGELA TORRES",
         "fecha_nacimiento": "23-02-1973"
-      },
-      {
-        "numero_paciente": "10219",
-        "nombre": "ROBERTO ROMERO",
-        "fecha_nacimiento": "13-05-1956"
       },
       {
         "numero_paciente": "10263",

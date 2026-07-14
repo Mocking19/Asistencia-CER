@@ -676,16 +676,6 @@
       }
     ]
   },
-   {
-    "protocolo": "DRAVITE / WA45846",
-    "pacientes": [
-      {
-        "numero_paciente": "X",
-        "nombre": "LUIS CAYLLET"
-        "fecha_nacimiento": "05-08-1967"
-      }
-    ]
-  },
   {
     "protocolo": "GO",
     "pacientes": [

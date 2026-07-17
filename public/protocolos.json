@@ -645,6 +645,15 @@
         "fecha_nacimiento": "29-06-1981"
       }
     ]
+  },{
+    "protocolo": "DRAVITE / WA45846",
+    "pacientes": [
+      {
+        "numero_paciente": "???",
+        "nombre": "LUIS CAYLLET",
+        "fecha_nacimiento": "XX-08-XXXX"
+      }
+    ]
   },
   {
     "protocolo": "GN",

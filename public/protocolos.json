@@ -649,9 +649,13 @@
     "protocolo": "DRAVITE / WA45846",
     "pacientes": [
       {
-        "numero_paciente": "???",
+        "numero_paciente": "100211",
         "nombre": "LUIS CAYLLET",
-        "fecha_nacimiento": "XX-08-XXXX"
+        "fecha_nacimiento": "05-08-1967"
+      },{
+        "numero_paciente": "???",
+        "nombre": "GILLERMO NEIRA",
+        "fecha_nacimiento": "XX-XX-XXXX"
       }
     ]
   },

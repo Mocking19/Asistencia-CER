@@ -42,6 +42,9 @@ const patientPrevPage = document.getElementById('patientPrevPage');
 const patientNextPage = document.getElementById('patientNextPage');
 const patientPageLabel = document.getElementById('patientPageLabel');
 const patientsTableBody = document.querySelector('#patientsTable tbody');
+const lastVisitModal = document.getElementById('lastVisitModal');
+const lastVisitTitle = document.getElementById('lastVisitTitle');
+const lastVisitContent = document.getElementById('lastVisitContent');
 const attendancePage = document.getElementById('attendancePage');
 const patientViewerPage = document.getElementById('patientViewerPage');
 const navAttendance = document.getElementById('navAttendance');
@@ -222,6 +225,71 @@ function getSelectedDate() {
   return getLocalDateString(new Date());
 }
 
+function getLastVisitForPatient(protocol, patientNumber, currentAppointmentId = null) {
+  const appointmentsArray = Object.keys(appointmentsData).map(id => ({ id, ...appointmentsData[id] }));
+  const patientAppointments = appointmentsArray.filter(item =>
+    item.patientNumber === patientNumber && item.protocol === protocol && item.id !== currentAppointmentId
+  );
+
+  if (patientAppointments.length === 0) return null;
+
+  patientAppointments.sort((a, b) => {
+    if (a.appointmentDate !== b.appointmentDate) {
+      return b.appointmentDate.localeCompare(a.appointmentDate);
+    }
+    return (b.appointmentTime || '').localeCompare(a.appointmentTime || '');
+  });
+
+  return patientAppointments[0];
+}
+
+function showLastVisit(protocol, patientNumber, currentAppointmentId = null) {
+  const lastVisit = getLastVisitForPatient(protocol, patientNumber, currentAppointmentId);
+  const patient = protocolosData
+    .find(item => item.protocolo === protocol)
+    ?.pacientes.find(p => p.numero_paciente === patientNumber);
+
+  lastVisitTitle.textContent = patient
+    ? `Última visita de ${patient.nombre}`
+    : 'Última visita del paciente';
+
+  if (!lastVisit) {
+    lastVisitContent.innerHTML = `
+      <p>No se encontró ninguna visita anterior registrada para este paciente.</p>
+    `;
+  } else {
+    const status = lastVisit.absent
+      ? 'No asistió'
+      : lastVisit.arrivalTime
+        ? 'Llegó'
+        : 'Pendiente';
+
+    const arrivalTime = lastVisit.arrivalTime ? formatTime(lastVisit.arrivalTime) : '-';
+
+    lastVisitContent.innerHTML = `
+      <div class="detail-row"><strong>Visita:</strong> ${lastVisit.visit || '-'}</div>
+      <div class="detail-row"><strong>Protocolo:</strong> ${lastVisit.protocol}</div>
+      <div class="detail-row"><strong>Número de paciente:</strong> ${lastVisit.patientNumber}</div>
+      <div class="detail-row"><strong>Nombre:</strong> ${lastVisit.name || '-'}</div>
+      <div class="detail-row"><strong>Fecha de cita:</strong> ${lastVisit.appointmentDate ? formatDateFromString(lastVisit.appointmentDate) : '-'}</div>
+      <div class="detail-row"><strong>Horario de cita:</strong> ${lastVisit.appointmentTime || '-'}</div>
+      <div class="detail-row"><strong>Doctor:</strong> ${lastVisit.doctor || '-'}</div>
+      <div class="detail-row"><strong>Observaciones:</strong> ${lastVisit.notes || '-'}</div>
+      <div class="detail-row"><strong>Estado:</strong> ${status}</div>
+      <div class="detail-row"><strong>Hora de llegada:</strong> ${arrivalTime}</div>
+      ${lastVisit.absent ? `<div class="detail-row"><strong>Razón de ausencia:</strong> ${lastVisit.absenceReason || '-'}</div>` : ''}
+    `;
+  }
+
+  lastVisitModal.classList.remove('hidden');
+  lastVisitModal.setAttribute('aria-hidden', 'false');
+}
+
+function closeLastVisitModal() {
+  lastVisitModal.classList.add('hidden');
+  lastVisitModal.setAttribute('aria-hidden', 'true');
+}
+
 function buildAppointmentRow(appointment) {
   const tr = document.createElement('tr');
   const isAbsent = appointment.absent;
@@ -257,7 +325,7 @@ function buildAppointmentRow(appointment) {
     <td>${appointment.name}</td>
     <td>${appointment.birthDate ? formatDateFromString(appointment.birthDate) : '-'}</td>
     <td>${appointment.doctor}</td>
-    <td>${appointment.appointmentDate ? formatDateFromString(appointment.appointmentDate) : '-'}</td>
+    <td><button type="button" class="btn-small" onclick="showLastVisit('${appointment.protocol}', '${appointment.patientNumber}', '${appointment.id}')">Ver detalle</button></td>
     <td>${appointment.appointmentTime || '-'}</td>
     <td>${appointment.notes || '-'}</td>
     <td>${arrivalHourHtml}</td>
@@ -1040,7 +1108,7 @@ function renderPatientViewer() {
   patientsTableBody.innerHTML = '';
 
   if (pagedRows.length === 0) {
-    patientsTableBody.innerHTML = `<tr><td colspan="4">No se encontraron pacientes con estos filtros.</td></tr>`;
+    patientsTableBody.innerHTML = `<tr><td colspan="5">No se encontraron pacientes con estos filtros.</td></tr>`;
   } else {
     pagedRows.forEach(row => {
       const tr = document.createElement('tr');
@@ -1049,7 +1117,19 @@ function renderPatientViewer() {
         <td>${row.numero_paciente}</td>
         <td>${row.nombre}</td>
         <td>${row.fecha_nacimiento}</td>
+        <td class="cell-actions"></td>
       `;
+
+      const actionsCell = tr.querySelector('.cell-actions');
+      const viewButton = document.createElement('button');
+      viewButton.type = 'button';
+      viewButton.className = 'btn-small';
+      viewButton.textContent = 'Ver última visita';
+      viewButton.addEventListener('click', () => {
+        showLastVisit(row.protocolo, row.numero_paciente);
+      });
+      actionsCell.appendChild(viewButton);
+
       patientsTableBody.appendChild(tr);
     });
   }

@@ -656,6 +656,10 @@
         "numero_paciente": "100212",
         "nombre": "GILLERMO NEIRA",
         "fecha_nacimiento": "22-11-1979"
+      },{
+        "numero_paciente": "100213",
+        "nombre": "GRACIELA TAMBLAY",
+        "fecha_nacimiento": "23-02-1960"
       }
     ]
   },

@@ -661,9 +661,13 @@
         "nombre": "GRACIELA TAMBLAY",
         "fecha_nacimiento": "23-02-1960"
       },{
-        "numero_paciente": "????",
+        "numero_paciente": "100220",
         "nombre": "NANCY OLIVAR",
         "fecha_nacimiento": "04-12-1968"
+      },{
+        "numero_paciente": "?????",
+        "nombre": "ESTELA SIERRA",
+        "fecha_nacimiento": "09-05-1977"
       }
     ]
   },

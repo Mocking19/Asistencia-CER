@@ -1436,6 +1436,11 @@
         "numero_paciente": "01206-20006",
         "nombre": "GRACIELA ROMANO",
         "fecha_nacimiento": "04-04-1973"
+      },
+      {
+        "numero_paciente": "01206-20007",
+        "nombre": "MARIANA PEREYRA",
+        "fecha_nacimiento": "??-??-????"
       }
     ]
   },

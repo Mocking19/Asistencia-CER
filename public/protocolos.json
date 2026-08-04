@@ -1401,6 +1401,11 @@
         "numero_paciente": "60011-01887",
         "nombre": "ALEJANDRA GARI",
         "fecha_nacimiento": "08-05-1981"
+      },
+      {
+        "numero_paciente": "60011-????",
+        "nombre": "LUCIA DONADILLE",
+        "fecha_nacimiento": "??-??-????"
       }
     ]
   },

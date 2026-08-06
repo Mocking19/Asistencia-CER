@@ -441,12 +441,7 @@
     "protocolo": "DAIICHI 303",
     "pacientes": [
       {
-        "numero_paciente": "54050012",
-        "nombre": "GILBERTO HARLINTON FERNANDEZ",
-        "fecha_nacimiento": "14-06-1944"
-      },
-      {
-        "numero_paciente": "54050001",
+         "numero_paciente": "54050001",
         "nombre": "FELICIANO LEDESMA",
         "fecha_nacimiento": "09-03-1955"
       },
@@ -464,6 +459,11 @@
         "numero_paciente": "54050005",
         "nombre": "OSCAR JUAN DULITSKY",
         "fecha_nacimiento": "28-05-1951"
+      },
+      {
+        "numero_paciente": "54050006",
+        "nombre": "CARLOS ALBERTO BOUQUET",
+        "fecha_nacimiento": "16-05-1950"
       },
       {
         "numero_paciente": "54050007",
@@ -486,39 +486,14 @@
         "fecha_nacimiento": "31-01-1956"
       },
       {
-        "numero_paciente": "54071001",
-        "nombre": "RAMÓN GUILLERMO ESPINDOLA",
-        "fecha_nacimiento": "05-02-1956"
-      },
-      {
-        "numero_paciente": "54071002",
-        "nombre": "SANTIAGO ENRRIQUE RODRIGUEZ",
-        "fecha_nacimiento": "20-07-1954"
-      },
-      {
-        "numero_paciente": "54071004",
-        "nombre": "JUAN FLORENCIO CASTRO",
-        "fecha_nacimiento": "15-10-1943"
-      },
-      {
-        "numero_paciente": "54071005",
-        "nombre": "ALDO FERNANDO SANCHEZ",
-        "fecha_nacimiento": "30-05-1950"
-      },
-      {
-        "numero_paciente": "54071006",
-        "nombre": "PABLO MARTÍN",
-        "fecha_nacimiento": "23-03-1949"
-      },
-      {
-        "numero_paciente": "540500006",
-        "nombre": "CARLOS ALBERTO BOUQUET",
-        "fecha_nacimiento": "16-05-1950"
-      },
-      {
         "numero_paciente": "540500011",
         "nombre": "MARÍA DEL CARMEN GUTIERREZ",
         "fecha_nacimiento": "22-03-1949"
+      },
+      {
+       "numero_paciente": "54050012",
+        "nombre": "GILBERTO HARLINTON FERNANDEZ",
+        "fecha_nacimiento": "14-06-1944" 
       },
       {
         "numero_paciente": "540500015",

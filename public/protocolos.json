@@ -620,6 +620,16 @@
         "fecha_nacimiento": "29-06-1981"
       }
     ]
+  },
+  {
+    "protocolo": "DAIICHI-854",
+    "pacientes": [
+      {
+        "numero_paciente": "54130001",
+        "nombre": "ROSA VERA",
+        "fecha_nacimiento": "28-02-1959"
+      }
+    ]
   },{
     "protocolo": "DRAVITE / WA45846",
     "pacientes": [

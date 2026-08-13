@@ -1108,11 +1108,6 @@
         "fecha_nacimiento": "22-04-1974"
       },
       {
-        "numero_paciente": "10131",
-        "nombre": "JUAN EUSEBIO CANO",
-        "fecha_nacimiento": "24-12-1958"
-      },
-      {
         "numero_paciente": "10169",
         "nombre": "MANUEL PUERTAS",
         "fecha_nacimiento": "15-08-1949"
@@ -1152,6 +1147,11 @@
   {
     "protocolo": "JPEG",
     "pacientes": [
+      {
+        "numero_paciente": "10131",
+        "nombre": "JUAN EUSEBIO CANO",
+        "fecha_nacimiento": "24-12-1958"
+      },
       {
         "numero_paciente": "10166",
         "nombre": "VALENTÍN HUGO SILVA",

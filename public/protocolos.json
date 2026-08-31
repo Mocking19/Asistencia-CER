@@ -1431,6 +1431,11 @@
         "numero_paciente": "01206-20006",
         "nombre": "MARIANA PEREYRA",
         "fecha_nacimiento": "24-06-1971"
+      },
+      {
+        "numero_paciente": "01206-20007",
+        "nombre": "IVAN CHAVEZ",
+        "fecha_nacimiento": "16-04-1995"
       }
     ]
   },

@@ -628,6 +628,10 @@
         "numero_paciente": "54130001",
         "nombre": "ROSA VERA",
         "fecha_nacimiento": "28-02-1959"
+      }.{
+        "numero_paciente": "XXXXXX",
+        "nombre": "ROSA ESTER LOPEZ",
+        "fecha_nacimiento": "25-11-1952"
       }
     ]
   },{

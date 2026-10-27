@@ -670,6 +670,16 @@
       }
     ]
   },
+    {
+    "protocolo": "FINALITY",
+    "pacientes": [
+      {
+        "numero_paciente": "?????????",
+        "nombre": "ROXANA NOEMI RAMIREZ",
+        "fecha_nacimiento": "05-01-1992"
+      }
+    ]
+  },
   {
     "protocolo": "GN",
     "pacientes": [
